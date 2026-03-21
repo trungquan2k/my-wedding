@@ -13,7 +13,21 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        display: ['Playfair Display', 'serif'],
+        script: ['Great Vibes', 'cursive'],
+        body: ['Cormorant Garamond', 'serif'],
+      },
       colors: {
+        wedding: {
+          gold: "hsl(var(--wedding-gold))",
+          "gold-light": "hsl(var(--wedding-gold-light))",
+          cream: "hsl(var(--wedding-cream))",
+          burgundy: "hsl(var(--wedding-burgundy))",
+          "burgundy-light": "hsl(var(--wedding-burgundy-light))",
+          brown: "hsl(var(--wedding-brown))",
+          warm: "hsl(var(--wedding-warm))",
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
