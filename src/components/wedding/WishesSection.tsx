@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Send } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
-import OrnamentDivider from "./OrnamentDivider";
 
 interface Wish {
   name: string;
@@ -28,34 +27,36 @@ const WishesSection = () => {
   };
 
   return (
-    <section className="wedding-section bg-background">
-      <div className="max-w-2xl mx-auto text-center">
+    <section id="wishes" className="py-20 md:py-28 bg-background">
+      <div className="max-w-2xl mx-auto text-center px-4">
         <ScrollReveal>
           <p className="wedding-script text-3xl md:text-4xl wedding-gold-text mb-2">
-            Lời chúc
+            Sổ lưu bút
           </p>
-          <OrnamentDivider className="mb-10" />
+          <p className="text-muted-foreground wedding-body text-lg mb-12">
+            Guestbook
+          </p>
         </ScrollReveal>
 
         <ScrollReveal delay={0.1}>
-          <form onSubmit={handleSubmit} className="mb-10 text-left space-y-4">
+          <form onSubmit={handleSubmit} className="mb-12 text-left space-y-4">
             <input
               type="text"
               placeholder="Tên của bạn"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full px-4 py-3 border border-border rounded-sm bg-background wedding-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-wedding-gold/50"
+              className="w-full px-4 py-3 border border-border rounded-sm bg-background wedding-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring/50"
             />
             <textarea
               placeholder="Gửi lời chúc đến cô dâu & chú rể..."
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               rows={3}
-              className="w-full px-4 py-3 border border-border rounded-sm bg-background wedding-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-wedding-gold/50 resize-none"
+              className="w-full px-4 py-3 border border-border rounded-sm bg-background wedding-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring/50 resize-none"
             />
             <button
               type="submit"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-wedding-burgundy text-wedding-cream wedding-display tracking-wider hover:bg-wedding-burgundy-light transition-colors duration-300 active:scale-[0.97] rounded-sm"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-secondary text-secondary-foreground wedding-display tracking-wider hover:opacity-90 transition-opacity active:scale-[0.97] rounded-sm"
             >
               <Send className="w-4 h-4" />
               Gửi lời chúc
@@ -66,7 +67,7 @@ const WishesSection = () => {
         <div className="space-y-4">
           {wishes.map((w, i) => (
             <ScrollReveal key={i} delay={0.05 * i}>
-              <div className="text-left p-4 bg-wedding-warm rounded-sm border border-border">
+              <div className="text-left p-5 bg-wedding-warm rounded-sm border border-border">
                 <div className="flex items-baseline justify-between mb-1">
                   <span className="font-semibold wedding-display text-foreground">{w.name}</span>
                   <span className="text-xs text-muted-foreground">{w.time}</span>
