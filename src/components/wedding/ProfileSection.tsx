@@ -13,13 +13,16 @@ const ProfileSection = () => {
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         <ScrollReveal>
           <div className="text-center mb-20 md:mb-28">
-            <span className="wedding-body text-wedding-gold tracking-[0.4em] text-sm md:text-base uppercase mb-4 block">Save The Date</span>
+            <span className="wedding-body text-wedding-gold tracking-[0.4em] text-sm md:text-base uppercase mb-4 block">
+              Save The Date
+            </span>
             <h2 className="wedding-script text-5xl md:text-7xl wedding-gold-text mb-6">
               Lời Mời Trân Trọng
             </h2>
             <div className="w-32 h-px bg-wedding-gold/40 mx-auto mb-8" />
             <p className="wedding-body text-foreground text-lg md:text-xl max-w-2xl mx-auto leading-relaxed italic opacity-80">
-              Trân trọng kính mời quý khách đến dự buổi tiệc mừng lễ thành hôn của gia đình chúng tôi
+              Trân trọng kính mời quý khách đến dự buổi tiệc mừng lễ thành hôn
+              của gia đình chúng tôi
             </p>
           </div>
         </ScrollReveal>
@@ -39,7 +42,9 @@ const ProfileSection = () => {
                 </div>
                 {/* Badge decoration */}
                 <div className="absolute top-10 right-0 z-20 bg-wedding-gold text-white px-4 py-2 rounded-full shadow-lg -rotate-12 translate-x-4">
-                  <span className="wedding-body text-xs font-semibold tracking-widest uppercase">Groom Side</span>
+                  <span className="wedding-body text-xs font-semibold tracking-widest uppercase">
+                    Groom Side
+                  </span>
                 </div>
               </div>
             </ScrollReveal>
@@ -51,15 +56,27 @@ const ProfileSection = () => {
               <h3 className="wedding-display text-4xl md:text-6xl wedding-burgundy-text mb-4 font-bold tracking-tight">
                 Hoàng Trung Quân
               </h3>
-              <p className="wedding-body text-muted-foreground text-xl md:text-2xl mb-8 font-light italic">(Trưởng Nam)</p>
-              
+              <p className="wedding-body text-muted-foreground text-xl md:text-2xl mb-8 font-light italic">
+                (Quý Nam)
+              </p>
+
               {/* Family Info */}
               <div className="mb-12 space-y-3 text-foreground wedding-body text-lg md:text-xl border-t border-b border-wedding-gold/10 py-6">
-                <p>Quý tử của: <span className="font-semibold text-wedding-burgundy">Hoàng Văn Đoàn</span></p>
-                <p>& <span className="font-semibold text-wedding-burgundy">Lê Thị Quy</span></p>
+                <p>
+                  Quý tử của:{" "}
+                  <span className="font-semibold text-wedding-burgundy">
+                    Hoàng Văn Đoàn
+                  </span>
+                </p>
+                <p>
+                  &{" "}
+                  <span className="font-semibold text-wedding-burgundy">
+                    Lê Thị Quy
+                  </span>
+                </p>
                 <p className="text-sm text-muted-foreground mt-4 not-italic">
-                   <MapPin className="inline-block w-4 h-4 mr-2 text-wedding-gold" />
-                   Thôn Phú Kinh, xã Bắc Trạch, huyện Bố Trạch, tỉnh Quảng Bình
+                  <MapPin className="inline-block w-4 h-4 mr-2 text-wedding-gold" />
+                  Thôn Phú Kinh, xã Bắc Trạch, huyện Bố Trạch, tỉnh Quảng Bình
                 </p>
               </div>
 
@@ -69,45 +86,60 @@ const ProfileSection = () => {
                 <p className="wedding-script text-4xl md:text-5xl wedding-gold-text mb-10 text-center">
                   Lễ Thành Hôn
                 </p>
-                
+
                 <div className="space-y-10 text-foreground wedding-body">
                   <div className="space-y-4">
                     <div className="flex items-center gap-4 mb-2">
-                       <span className="w-10 h-px bg-wedding-gold" />
-                       <p className="font-bold wedding-display text-wedding-burgundy uppercase tracking-[0.2em] text-sm">Hôn lễ cử hành tại Tư gia</p>
+                      <span className="w-10 h-px bg-wedding-gold" />
+                      <p className="font-bold wedding-display text-wedding-burgundy uppercase tracking-[0.2em] text-sm">
+                        Hôn lễ cử hành tại Tư gia
+                      </p>
                     </div>
                     <div className="flex items-center gap-5 ml-2">
                       <div className="w-12 h-12 rounded-full bg-wedding-gold/10 flex items-center justify-center shrink-0">
                         <Clock className="w-6 h-6 text-wedding-gold" />
                       </div>
-                      <p className="text-2xl md:text-3xl font-medium">07h00 - Thứ Ba</p>
+                      <p className="text-2xl md:text-3xl font-medium">
+                        07h00 - Thứ Ba
+                      </p>
                     </div>
-                    <p className="text-lg md:text-xl ml-16 text-wedding-burgundy/80 font-display">26 . 05 . 2026</p>
-                    <p className="text-sm text-muted-foreground ml-16 italic">(10/04 Âm lịch năm Bính Ngọ)</p>
+                    <p className="text-lg md:text-xl ml-16 text-wedding-burgundy/80 font-display">
+                      26 . 05 . 2026
+                    </p>
+                    <p className="text-sm text-muted-foreground ml-16 italic">
+                      (10/04 Âm lịch năm Bính Ngọ)
+                    </p>
                   </div>
 
                   <div className="space-y-4 pt-6 border-t border-dashed border-wedding-gold/20">
                     <div className="flex items-center gap-4 mb-2">
-                       <span className="w-10 h-px bg-wedding-gold" />
-                       <p className="font-bold wedding-display text-wedding-burgundy uppercase tracking-[0.2em] text-sm">Tiệc mừng tại Tư gia</p>
+                      <span className="w-10 h-px bg-wedding-gold" />
+                      <p className="font-bold wedding-display text-wedding-burgundy uppercase tracking-[0.2em] text-sm">
+                        Tiệc mừng tại Tư gia
+                      </p>
                     </div>
                     <div className="flex items-center gap-5 ml-2">
                       <div className="w-12 h-12 rounded-full bg-wedding-gold/10 flex items-center justify-center shrink-0">
                         <Clock className="w-6 h-6 text-wedding-gold" />
                       </div>
-                      <p className="text-2xl md:text-3xl font-medium">10h30 Sáng</p>
+                      <p className="text-2xl md:text-3xl font-medium">
+                        10h30 Sáng
+                      </p>
                     </div>
                     <div className="flex items-start gap-5 ml-2">
                       <div className="w-12 h-12 rounded-full bg-wedding-gold/10 flex items-center justify-center shrink-0 mt-1">
                         <MapPin className="w-6 h-6 text-wedding-gold" />
                       </div>
-                      <p className="text-base md:text-lg leading-relaxed flex-1">Thôn Phú Kinh, xã Bắc Trạch, huyện Bố Trạch, tỉnh Quảng Bình</p>
+                      <p className="text-base md:text-lg leading-relaxed flex-1">
+                        Thôn Phú Kinh, xã Bắc Trạch, huyện Bố Trạch, tỉnh Quảng
+                        Bình
+                      </p>
                     </div>
                   </div>
                 </div>
-                
+
                 <a
-                  href="https://maps.app.goo.gl/..."
+                  href="https://maps.app.goo.gl/rQW4JUwTbxWbMa7v9"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-12 flex items-center justify-center gap-3 bg-wedding-gold/10 hover:bg-wedding-gold text-wedding-gold hover:text-white py-4 rounded-xl transition-all duration-500 text-xs md:text-sm uppercase tracking-[0.3em] font-bold"
@@ -132,7 +164,9 @@ const ProfileSection = () => {
                 </div>
                 {/* Badge decoration */}
                 <div className="absolute top-10 left-0 z-20 bg-wedding-gold text-white px-4 py-2 rounded-full shadow-lg rotate-12 -translate-x-4">
-                  <span className="wedding-body text-xs font-semibold tracking-widest uppercase">Bride Side</span>
+                  <span className="wedding-body text-xs font-semibold tracking-widest uppercase">
+                    Bride Side
+                  </span>
                 </div>
               </div>
             </ScrollReveal>
@@ -144,15 +178,27 @@ const ProfileSection = () => {
               <h3 className="wedding-display text-4xl md:text-6xl wedding-burgundy-text mb-4 font-bold tracking-tight">
                 Nguyễn Thị Yến Nhi
               </h3>
-              <p className="wedding-body text-muted-foreground text-xl md:text-2xl mb-8 font-light italic">(Trưởng Nữ)</p>
+              <p className="wedding-body text-muted-foreground text-xl md:text-2xl mb-8 font-light italic">
+                (Quý Nữ)
+              </p>
 
               {/* Family Info */}
               <div className="mb-12 space-y-3 text-foreground wedding-body text-lg md:text-xl border-t border-b border-wedding-gold/10 py-6">
-                <p>Ái nữ của: <span className="font-semibold text-wedding-burgundy">Nguyễn Đức Thạnh</span></p>
-                <p>& <span className="font-semibold text-wedding-burgundy">Lê Thị Tuyết My</span></p>
+                <p>
+                  Ái nữ của:{" "}
+                  <span className="font-semibold text-wedding-burgundy">
+                    Nguyễn Đức Thạnh
+                  </span>
+                </p>
+                <p>
+                  &{" "}
+                  <span className="font-semibold text-wedding-burgundy">
+                    Lê Thị Tuyết My
+                  </span>
+                </p>
                 <p className="text-sm text-muted-foreground mt-4 not-italic">
-                   <MapPin className="inline-block w-4 h-4 mr-2 text-wedding-gold" />
-                   Tổ 8, thôn Mỹ Chánh, xã Nam Hải Lăng, tỉnh Quảng Trị
+                  <MapPin className="inline-block w-4 h-4 mr-2 text-wedding-gold" />
+                  Tổ 8, thôn Mỹ Chánh, xã Nam Hải Lăng, tỉnh Quảng Trị
                 </p>
               </div>
 
@@ -166,41 +212,55 @@ const ProfileSection = () => {
                 <div className="space-y-10 text-foreground wedding-body">
                   <div className="space-y-4">
                     <div className="flex items-center gap-4 mb-2">
-                       <span className="w-10 h-px bg-wedding-gold" />
-                       <p className="font-bold wedding-display text-wedding-burgundy uppercase tracking-[0.2em] text-sm">Hôn lễ cử hành tại Tư gia</p>
+                      <span className="w-10 h-px bg-wedding-gold" />
+                      <p className="font-bold wedding-display text-wedding-burgundy uppercase tracking-[0.2em] text-sm">
+                        Hôn lễ cử hành tại Tư gia
+                      </p>
                     </div>
                     <div className="flex items-center gap-5 ml-2">
                       <div className="w-12 h-12 rounded-full bg-wedding-gold/10 flex items-center justify-center shrink-0">
                         <Clock className="w-6 h-6 text-wedding-gold" />
                       </div>
-                      <p className="text-2xl md:text-3xl font-medium">08h00 - Chủ Nhật</p>
+                      <p className="text-2xl md:text-3xl font-medium">
+                        08h00 - Chủ Nhật
+                      </p>
                     </div>
-                    <p className="text-lg md:text-xl ml-16 text-wedding-burgundy/80 font-display">24 . 05 . 2026</p>
-                    <p className="text-sm text-muted-foreground ml-16 italic">(08/04 Âm lịch năm Bính Ngọ)</p>
+                    <p className="text-lg md:text-xl ml-16 text-wedding-burgundy/80 font-display">
+                      24 . 05 . 2026
+                    </p>
+                    <p className="text-sm text-muted-foreground ml-16 italic">
+                      (08/04 Âm lịch năm Bính Ngọ)
+                    </p>
                   </div>
 
                   <div className="space-y-4 pt-6 border-t border-dashed border-wedding-gold/20">
                     <div className="flex items-center gap-4 mb-2">
-                       <span className="w-10 h-px bg-wedding-gold" />
-                       <p className="font-bold wedding-display text-wedding-burgundy uppercase tracking-[0.2em] text-sm">Tiệc mừng tại Tư gia</p>
+                      <span className="w-10 h-px bg-wedding-gold" />
+                      <p className="font-bold wedding-display text-wedding-burgundy uppercase tracking-[0.2em] text-sm">
+                        Tiệc mừng tại Tư gia
+                      </p>
                     </div>
                     <div className="flex items-center gap-5 ml-2">
                       <div className="w-12 h-12 rounded-full bg-wedding-gold/10 flex items-center justify-center shrink-0">
                         <Clock className="w-6 h-6 text-wedding-gold" />
                       </div>
-                      <p className="text-2xl md:text-3xl font-medium">11h00 Sáng</p>
+                      <p className="text-2xl md:text-3xl font-medium">
+                        11h00 Sáng
+                      </p>
                     </div>
                     <div className="flex items-start gap-5 ml-2">
                       <div className="w-12 h-12 rounded-full bg-wedding-gold/10 flex items-center justify-center shrink-0 mt-1">
                         <MapPin className="w-6 h-6 text-wedding-gold" />
                       </div>
-                      <p className="text-base md:text-lg leading-relaxed flex-1">Tổ 8, thôn Mỹ Chánh, xã Nam Hải Lăng, tỉnh Quảng Trị</p>
+                      <p className="text-base md:text-lg leading-relaxed flex-1">
+                        Tổ 8, thôn Mỹ Chánh, xã Nam Hải Lăng, tỉnh Quảng Trị
+                      </p>
                     </div>
                   </div>
                 </div>
 
                 <a
-                  href="https://maps.app.goo.gl/..."
+                  href="https://maps.app.goo.gl/546cZurhSAooApAT8"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-12 flex items-center justify-center gap-3 bg-wedding-gold/10 hover:bg-wedding-gold text-wedding-gold hover:text-white py-4 rounded-xl transition-all duration-500 text-xs md:text-sm uppercase tracking-[0.3em] font-bold"
@@ -217,5 +277,3 @@ const ProfileSection = () => {
 };
 
 export default ProfileSection;
-
-
