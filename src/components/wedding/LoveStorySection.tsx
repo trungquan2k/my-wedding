@@ -44,7 +44,7 @@ const LoveStorySection = () => {
       <div className="max-w-6xl mx-auto px-4 mb-16">
         <ScrollReveal>
           <p className="wedding-script text-3xl md:text-4xl wedding-gold-text text-center mb-2">
-            Chuyện tình yêu
+            Chuyện tình yêu của chúng mình
           </p>
           <p className="text-center text-muted-foreground wedding-body text-lg">
             Our Love Story
