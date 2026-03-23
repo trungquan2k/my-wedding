@@ -11,8 +11,10 @@ import ProfileSection from "@/components/wedding/ProfileSection";
 import bannerImg from "@/assets/KENN0574.jpg";
 import GiftSection from "@/components/wedding/GiftSection";
 import { useState, useEffect } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 
 const Index = () => {
+  const { t } = useLanguage();
   const [isLocked, setIsLocked] = useState(true);
   const [guestName, setGuestName] = useState<string | null>(null);
 
@@ -49,8 +51,8 @@ const Index = () => {
       <GallerySection />
       <ParallaxBanner
         image={bannerImg}
-        text="Hạnh phúc là khi ta tìm thấy nhau"
-        subtext="Forever begins with us"
+        text={t("parallax.text")}
+        subtext={t("parallax.subtext")}
       />
       <CountdownSection />
       <GiftSection />
@@ -59,6 +61,5 @@ const Index = () => {
     </main>
   );
 };
-
 
 export default Index;

@@ -1,18 +1,21 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-
-const links = [
-  { label: "Câu chuyện", href: "#story" },
-  { label: "Album", href: "#gallery" },
-  { label: "Lễ cưới", href: "#details" },
-  { label: "Mừng cưới", href: "#gift" },
-  { label: "Lời chúc", href: "#wishes" },
-];
+import { useLanguage } from "@/context/LanguageContext";
+import { LanguageSwitch } from "./LanguageSwitch";
 
 const NavBar = () => {
+  const { t } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const links = [
+    { label: t("nav.story"), href: "#story" },
+    { label: t("nav.gallery"), href: "#gallery" },
+    { label: t("nav.details"), href: "#details" },
+    { label: t("nav.gift"), href: "#gift" },
+    { label: t("nav.wishes"), href: "#wishes" },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80);
@@ -36,7 +39,9 @@ const NavBar = () => {
           <a
             href="#"
             className={`wedding-script text-2xl transition-colors ${
-              scrolled || isMenuOpen ? "wedding-gold-text" : "text-white drop-shadow-md"
+              scrolled || isMenuOpen
+                ? "wedding-gold-text"
+                : "text-white drop-shadow-md"
             }`}
           >
             Q & N
@@ -57,17 +62,21 @@ const NavBar = () => {
                 {l.label}
               </a>
             ))}
+            <LanguageSwitch scrolled={scrolled} />
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className={`md:hidden p-2 transition-colors ${
-              scrolled || isMenuOpen ? "text-wedding-gold" : "text-white"
-            }`}
-          >
-            {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
+          <div className="md:hidden flex items-center gap-4">
+            <LanguageSwitch scrolled={scrolled || isMenuOpen} />
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className={`p-2 transition-colors ${
+                scrolled || isMenuOpen ? "text-wedding-gold" : "text-white"
+              }`}
+            >
+              {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+            </button>
+          </div>
         </div>
       </motion.nav>
 
@@ -82,9 +91,11 @@ const NavBar = () => {
             className="fixed inset-0 z-30 bg-background flex flex-col items-center justify-center gap-8 md:hidden"
           >
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.05)_0%,transparent_70%)]" />
-            
-            <p className="wedding-script text-4xl wedding-gold-text mb-4">Mục lục</p>
-            
+
+            <p className="wedding-script text-4xl wedding-gold-text mb-4">
+              {t("nav.menu")}
+            </p>
+
             {links.map((l, i) => (
               <motion.a
                 key={l.href}
@@ -100,8 +111,10 @@ const NavBar = () => {
             ))}
 
             <div className="mt-12 flex flex-col items-center gap-4">
-               <div className="w-12 h-px bg-wedding-gold/30" />
-               <p className="wedding-display text-wedding-gold/60 text-xs tracking-[0.3em]">26 . 05 . 2026</p>
+              <div className="w-12 h-px bg-wedding-gold/30" />
+              <p className="wedding-display text-wedding-gold/60 text-xs tracking-[0.3em]">
+                26 . 05 . 2026
+              </p>
             </div>
           </motion.div>
         )}
@@ -109,6 +122,5 @@ const NavBar = () => {
     </>
   );
 };
-
 
 export default NavBar;

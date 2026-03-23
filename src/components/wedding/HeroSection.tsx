@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
 import { Heart, ChevronDown } from "lucide-react";
 import heroImg from "@/assets/KENN0643.jpg";
+import { useLanguage } from "@/context/LanguageContext";
 
 const HeroSection = () => {
+  const { t } = useLanguage();
   return (
     <section className="relative h-screen w-full overflow-hidden">
       {/* Full-bleed background photo */}
@@ -12,7 +14,7 @@ const HeroSection = () => {
           animate={{ scale: 1 }}
           transition={{ duration: 3, ease: "easeOut" }}
           src={heroImg}
-          alt="Ảnh cưới"
+          alt={t("hero.gettingMarried")}
           className="w-full h-full object-cover object-[center_25%]"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-black/60" />
@@ -26,7 +28,7 @@ const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
           className="wedding-script text-2xl md:text-3xl text-white/90 mb-3 drop-shadow-lg"
         >
-          We're Getting Married
+          {t("hero.gettingMarried")}
         </motion.p>
 
         <motion.div
@@ -64,7 +66,7 @@ const HeroSection = () => {
             className="flex flex-col items-center text-white/70 hover:text-white transition-colors"
           >
             <span className="text-sm wedding-body tracking-widest uppercase mb-2">
-              Khám phá
+              {t("hero.explore")}
             </span>
             <ChevronDown className="w-5 h-5 animate-bounce" />
           </a>
@@ -73,5 +75,6 @@ const HeroSection = () => {
     </section>
   );
 };
+
 
 export default HeroSection;

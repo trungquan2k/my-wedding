@@ -6,50 +6,53 @@ import firstDate from "@/assets/firstdate.jpg";
 import birthDay from "@/assets/my-second-birth.jpg";
 import img3 from "@/assets/KENN1039.jpg";
 import img4 from "@/assets/KENN0990.jpg";
-
-const stories = [
-  {
-    image: firstDate,
-    title: "Lần đầu yêu nhau",
-    date: "10 / 2019",
-    text: "Bắt đầu trò chuyện với nhau thâu đêm suốt sáng.",
-  },
-  {
-    image: birthDay,
-    title: "Sinh nhật cùng nhau",
-    date: "11 / 2020",
-    text: "Cùng anh đón sinh nhật",
-  },
-  {
-    image: newLove,
-    title: "Lời tỏ tình",
-    date: "02 / 2020",
-    text: "Lời tỏ tình đầy ngại ngùng khi còn đang đi học tại kí túc xá",
-  },
-  {
-    image: mylove,
-    title: "Lễ dặm ngõ",
-    date: "02 / 2026",
-    text: "2 Gia đình chính thức gặp nhau. Lời dặm ngõ của 2 gia đình",
-  },
-  {
-    image: img3,
-    title: "Ngày cưới",
-    date: "26 / 05 / 2026",
-    text: "Hành trình yêu của chúng mình khép lại bằng một đám cưới trong mơ. Cảm ơn vì đã luôn ở bên nhau.",
-  },
-  {
-    image: img4,
-    title: "Tổ ấm mới",
-    date: "Mãi về sau",
-    text: "Một tương lai mới đang chờ đợi phía trước, nơi chúng mình sẽ cùng nhau xây dựng tổ ấm hạnh phúc.",
-  },
-];
-
-// Double the stories for seamless looping
-const extendedStories = [...stories, ...stories];
+import { useLanguage } from "@/context/LanguageContext";
 
 const LoveStorySection = () => {
+  const { t } = useLanguage();
+
+  const stories = [
+    {
+      image: firstDate,
+      title: t("story.event1.title"),
+      date: t("story.event1.date"),
+      text: t("story.event1.text"),
+    },
+    {
+      image: birthDay,
+      title: t("story.event2.title"),
+      date: t("story.event2.date"),
+      text: t("story.event2.text"),
+    },
+    {
+      image: newLove,
+      title: t("story.event3.title"),
+      date: t("story.event3.date"),
+      text: t("story.event3.text"),
+    },
+    {
+      image: mylove,
+      title: t("story.event4.title"),
+      date: t("story.event4.date"),
+      text: t("story.event4.text"),
+    },
+    {
+      image: img3,
+      title: t("story.event5.title"),
+      date: t("story.event5.date"),
+      text: t("story.event5.text"),
+    },
+    {
+      image: img4,
+      title: t("story.event6.title"),
+      date: t("story.event6.date"),
+      text: t("story.event6.text"),
+    },
+  ];
+
+  // Double the stories for seamless looping
+  const extendedStories = [...stories, ...stories];
+
   return (
     <section
       id="story"
@@ -58,10 +61,10 @@ const LoveStorySection = () => {
       <div className="max-w-6xl mx-auto px-4 mb-16">
         <ScrollReveal>
           <p className="wedding-script text-3xl md:text-4xl wedding-gold-text text-center mb-2">
-            Chuyện tình yêu của chúng mình
+            {t("story.title")}
           </p>
           <p className="text-center text-muted-foreground wedding-body text-lg">
-            Our Love Story
+            {t("story.subtitle")}
           </p>
         </ScrollReveal>
       </div>

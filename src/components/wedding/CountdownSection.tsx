@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import ScrollReveal from "./ScrollReveal";
+import { useLanguage } from "@/context/LanguageContext";
 
 const WEDDING_DATE = new Date("2026-05-26T10:30:00+07:00");
 
 const CountdownSection = () => {
+  const { t, language } = useLanguage();
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -27,10 +29,10 @@ const CountdownSection = () => {
   }, []);
 
   const blocks = [
-    { value: timeLeft.days, label: "Ngày" },
-    { value: timeLeft.hours, label: "Giờ" },
-    { value: timeLeft.minutes, label: "Phút" },
-    { value: timeLeft.seconds, label: "Giây" },
+    { value: timeLeft.days, label: t("countdown.days") },
+    { value: timeLeft.hours, label: t("countdown.hours") },
+    { value: timeLeft.minutes, label: t("countdown.minutes") },
+    { value: timeLeft.seconds, label: t("countdown.seconds") },
   ];
 
   return (
@@ -41,7 +43,7 @@ const CountdownSection = () => {
             Save the Date
           </p>
           <p className="wedding-display text-xl md:text-2xl font-medium text-foreground tracking-wide mb-10">
-            25 tháng 05, 2026
+            {language === 'vi' ? '26 tháng 05, 2026' : 'May 26, 2026'}
           </p>
         </ScrollReveal>
 

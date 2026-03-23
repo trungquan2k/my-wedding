@@ -1,13 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ChevronLeft, ChevronRight, Home, Loader2 } from "lucide-react";
 import { supabase } from "@/lib/supabase";
 import { useQuery } from "@tanstack/react-query";
 import { formatDistanceToNow } from "date-fns";
-import { vi } from "date-fns/locale";
+import { vi, enUS } from "date-fns/locale";
 import FloatingHearts from "@/components/wedding/FloatingHearts";
 import ScrollReveal from "@/components/wedding/ScrollReveal";
 import NavBar from "@/components/wedding/NavBar";
+import { useLanguage } from "@/context/LanguageContext";
 
 const PAGE_SIZE = 10;
 
@@ -33,6 +34,7 @@ const fetchAllWishes = async (page: number) => {
 };
 
 const Wishes = () => {
+  const { t, language } = useLanguage();
   const [page, setPage] = useState(0);
 
   const { data, isLoading, isError } = useQuery({
@@ -41,6 +43,10 @@ const Wishes = () => {
   });
 
   const totalPages = data ? Math.ceil(data.count / PAGE_SIZE) : 0;
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [page]);
 
   return (
     <main className="min-h-screen bg-background relative overflow-hidden flex flex-col pt-24">
@@ -51,7 +57,7 @@ const Wishes = () => {
         <ScrollReveal>
           <div className="text-center mb-12">
             <p className="wedding-script text-4xl md:text-5xl wedding-gold-text mb-4">
-              Tất cả lời chúc
+              {language === 'vi' ? 'Tất cả lời chúc' : 'All Wishes'}
             </p>
             <div className="w-24 h-px bg-wedding-gold/30 mx-auto" />
           </div>
@@ -63,8 +69,12 @@ const Wishes = () => {
           </div>
         ) : isError ? (
           <div className="text-center py-20">
-            <p className="text-muted-foreground mb-6">Không thể tải dữ liệu vào lúc này.</p>
-            <Link to="/" className="text-wedding-gold hover:underline">Quay lại trang chủ</Link>
+            <p className="text-muted-foreground mb-6">
+              {language === 'vi' ? 'Không thể tải dữ liệu vào lúc này.' : 'Could not load wishes at this time.'}
+            </p>
+            <Link to="/" className="text-wedding-gold hover:underline">
+              {language === 'vi' ? 'Quay lại trang chủ' : 'Back to Home'}
+            </Link>
           </div>
         ) : data && data.data.length > 0 ? (
           <div className="space-y-4">
@@ -76,7 +86,10 @@ const Wishes = () => {
                       {w.name}
                     </span>
                     <span className="text-xs text-muted-foreground whitespace-nowrap">
-                      {formatDistanceToNow(new Date(w.created_at), { addSuffix: true, locale: vi })}
+                      {formatDistanceToNow(new Date(w.created_at), { 
+                        addSuffix: true, 
+                        locale: language === 'vi' ? vi : enUS 
+                      })}
                     </span>
                   </div>
                   <p className="text-foreground wedding-body text-lg leading-relaxed italic">
@@ -112,7 +125,9 @@ const Wishes = () => {
             )}
           </div>
         ) : (
-          <p className="text-center text-muted-foreground py-20 italic">Chưa có lời chúc nào.</p>
+          <p className="text-center text-muted-foreground py-20 italic">
+            {language === 'vi' ? 'Chưa có lời chúc nào.' : 'No wishes yet.'}
+          </p>
         )}
 
         <div className="mt-12 text-center">
@@ -120,7 +135,7 @@ const Wishes = () => {
             to="/" 
             className="inline-flex items-center gap-2 px-8 py-3 bg-secondary text-secondary-foreground wedding-display tracking-[0.2em] rounded-full shadow-lg hover:shadow-xl hover:opacity-90 transition-all font-semibold uppercase text-sm"
           >
-            <Home className="w-4 h-4" /> Quay lại trang chủ
+            <Home className="w-4 h-4" /> {language === 'vi' ? 'Quay lại trang chủ' : 'Back to Home'}
           </Link>
         </div>
       </div>

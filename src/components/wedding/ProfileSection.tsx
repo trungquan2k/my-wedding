@@ -4,12 +4,14 @@ import { MapPin, Clock, Calendar, Heart } from "lucide-react";
 import groomImg from "@/assets/KENN1083.jpg";
 import brideImg from "@/assets/KENN0499.jpg";
 import { GUEST_LIST } from "@/data/guests";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface ProfileSectionProps {
   guestName?: string | null;
 }
 
 const ProfileSection = ({ guestName }: ProfileSectionProps) => {
+  const { t } = useLanguage();
   const isInvited = guestName 
     ? GUEST_LIST.some(g => 
         Array.isArray(g) 
@@ -27,16 +29,16 @@ const ProfileSection = ({ guestName }: ProfileSectionProps) => {
         <ScrollReveal>
           <div className="text-center mb-20 md:mb-28">
             <span className="wedding-body text-wedding-gold tracking-[0.4em] text-sm md:text-base uppercase mb-4 block">
-              Save The Date
+              {t("profile.saveTheDate")}
             </span>
             <h2 className="wedding-script text-5xl md:text-7xl wedding-gold-text mb-6">
-              {isInvited ? `Mến chào ${guestName}` : "Lời Mời Trân Trọng"}
+              {isInvited ? `${t("profile.welcome")} ${guestName}` : t("profile.inviteTitle")}
             </h2>
             <div className="w-32 h-px bg-wedding-gold/40 mx-auto mb-8" />
             <p className="wedding-body text-foreground text-lg md:text-xl max-w-2xl mx-auto leading-relaxed italic opacity-80">
               {isInvited
-                ? `Trân trọng kính mời ${guestName} đến dự buổi tiệc mừng lễ thành hôn của gia đình chúng tôi`
-                : "Cảm ơn bạn đã ghé thăm và gửi những lời chúc tốt đẹp nhất đến với chúng mình!"}
+                ? t("profile.inviteDescInvited").replace("{name}", guestName || "")
+                : t("profile.inviteDescGeneral")}
             </p>
           </div>
         </ScrollReveal>
@@ -58,7 +60,7 @@ const ProfileSection = ({ guestName }: ProfileSectionProps) => {
                   {/* Badge decoration */}
                   <div className="absolute top-10 right-0 z-20 bg-wedding-gold text-white px-4 py-2 rounded-full shadow-lg -rotate-12 translate-x-4">
                     <span className="wedding-body text-xs font-semibold tracking-widest uppercase">
-                      Groom Side
+                      {t("profile.groomSide")}
                     </span>
                   </div>
                 </div>
@@ -66,7 +68,7 @@ const ProfileSection = ({ guestName }: ProfileSectionProps) => {
 
               <ScrollReveal delay={0.3} className="text-center w-full">
                 <span className="wedding-body text-wedding-gold tracking-[0.4em] text-sm uppercase mb-4 block">
-                  Chú Rể
+                  {t("profile.groom")}
                 </span>
                 <h3 className="wedding-display text-4xl md:text-6xl wedding-burgundy-text mb-4 font-bold tracking-tight">
                   Hoàng Trung Quân
@@ -78,7 +80,7 @@ const ProfileSection = ({ guestName }: ProfileSectionProps) => {
                 {/* Family Info */}
                 <div className="mb-12 space-y-3 text-foreground wedding-body text-lg md:text-xl border-t border-b border-wedding-gold/10 py-6">
                   <p>
-                    Quý tử của:{" "}
+                    {t("profile.sonOf")}{" "}
                     <span className="font-semibold text-wedding-burgundy">
                       Hoàng Văn Đoàn
                     </span>
@@ -99,7 +101,7 @@ const ProfileSection = ({ guestName }: ProfileSectionProps) => {
                 <div className="bg-white p-6 md:p-14 rounded-3xl shadow-2xl border border-wedding-gold/20 hover:border-wedding-gold/50 transition-all duration-700 max-w-lg mx-auto relative overflow-hidden group/card text-left">
                   <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-wedding-gold via-wedding-gold-light to-wedding-gold" />
                   <p className="wedding-script text-4xl md:text-5xl wedding-gold-text mb-10 text-center">
-                    Lễ Thành Hôn
+                    {t("profile.weddingCeremony")}
                   </p>
 
                   <div className="space-y-10 text-foreground wedding-body">
@@ -107,7 +109,7 @@ const ProfileSection = ({ guestName }: ProfileSectionProps) => {
                       <div className="flex items-center gap-4 mb-2">
                         <span className="w-10 h-px bg-wedding-gold" />
                         <p className="font-bold wedding-display text-wedding-burgundy uppercase tracking-[0.2em] text-sm">
-                          Hôn lễ cử hành tại Tư gia
+                          {t("profile.ceremonyAtHome")}
                         </p>
                       </div>
                       <div className="flex items-center gap-5 ml-2">
@@ -115,14 +117,14 @@ const ProfileSection = ({ guestName }: ProfileSectionProps) => {
                           <Clock className="w-6 h-6 text-wedding-gold" />
                         </div>
                         <p className="text-2xl md:text-3xl font-medium">
-                          07h00 - Thứ Ba
+                          07h00 - {t("profile.tuesday")}
                         </p>
                       </div>
                       <p className="text-lg md:text-xl ml-16 text-wedding-burgundy/80 font-display">
                         26 . 05 . 2026
                       </p>
                       <p className="text-sm text-muted-foreground ml-16 italic">
-                        (10/04 Âm lịch năm Bính Ngọ)
+                        {t("profile.lunarDateGroom")}
                       </p>
                     </div>
 
@@ -130,7 +132,7 @@ const ProfileSection = ({ guestName }: ProfileSectionProps) => {
                       <div className="flex items-center gap-4 mb-2">
                         <span className="w-10 h-px bg-wedding-gold" />
                         <p className="font-bold wedding-display text-wedding-burgundy uppercase tracking-[0.2em] text-sm">
-                          Tiệc mừng tại Tư gia
+                          {t("profile.receptionAtHome")}
                         </p>
                       </div>
                       <div className="flex items-center gap-5 ml-2">
@@ -138,7 +140,7 @@ const ProfileSection = ({ guestName }: ProfileSectionProps) => {
                           <Clock className="w-6 h-6 text-wedding-gold" />
                         </div>
                         <p className="text-2xl md:text-3xl font-medium">
-                          10h30 Sáng
+                          10h30 {t("profile.morning")}
                         </p>
                       </div>
                       <div className="flex items-start gap-5 ml-2">
@@ -159,7 +161,7 @@ const ProfileSection = ({ guestName }: ProfileSectionProps) => {
                     rel="noopener noreferrer"
                     className="mt-12 flex items-center justify-center gap-3 bg-wedding-gold/10 hover:bg-wedding-gold text-wedding-gold hover:text-white py-4 rounded-xl transition-all duration-500 text-xs md:text-sm uppercase tracking-[0.3em] font-bold"
                   >
-                    <MapPin className="w-4 h-4" /> Xem bản đồ trực tuyến
+                    <MapPin className="w-4 h-4" /> {t("profile.viewMap")}
                   </a>
                 </div>
               </ScrollReveal>
@@ -180,7 +182,7 @@ const ProfileSection = ({ guestName }: ProfileSectionProps) => {
                   {/* Badge decoration */}
                   <div className="absolute top-10 left-0 z-20 bg-wedding-gold text-white px-4 py-2 rounded-full shadow-lg rotate-12 -translate-x-4">
                     <span className="wedding-body text-xs font-semibold tracking-widest uppercase">
-                      Bride Side
+                      {t("profile.brideSide")}
                     </span>
                   </div>
                 </div>
@@ -188,7 +190,7 @@ const ProfileSection = ({ guestName }: ProfileSectionProps) => {
 
               <ScrollReveal delay={0.3} className="text-center w-full">
                 <span className="wedding-body text-wedding-gold tracking-[0.4em] text-sm uppercase mb-4 block">
-                  Cô Dâu
+                  {t("profile.bride")}
                 </span>
                 <h3 className="wedding-display text-4xl md:text-6xl wedding-burgundy-text mb-4 font-bold tracking-tight">
                   Nguyễn Thị Yến Nhi
@@ -200,7 +202,7 @@ const ProfileSection = ({ guestName }: ProfileSectionProps) => {
                 {/* Family Info */}
                 <div className="mb-12 space-y-3 text-foreground wedding-body text-lg md:text-xl border-t border-b border-wedding-gold/10 py-6">
                   <p>
-                    Ái nữ của:{" "}
+                    {t("profile.daughterOf")}{" "}
                     <span className="font-semibold text-wedding-burgundy">
                       Nguyễn Đức Thạnh
                     </span>
@@ -221,7 +223,7 @@ const ProfileSection = ({ guestName }: ProfileSectionProps) => {
                 <div className="bg-white p-6 md:p-14 rounded-3xl shadow-2xl border border-wedding-gold/20 hover:border-wedding-gold/50 transition-all duration-700 max-w-lg mx-auto relative overflow-hidden group/card text-left">
                   <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-wedding-gold via-wedding-gold-light to-wedding-gold" />
                   <p className="wedding-script text-4xl md:text-5xl wedding-gold-text mb-10 text-center">
-                    Lễ Vu Quy
+                    {t("profile.vuQuyCeremony")}
                   </p>
 
                   <div className="space-y-10 text-foreground wedding-body">
@@ -229,7 +231,7 @@ const ProfileSection = ({ guestName }: ProfileSectionProps) => {
                       <div className="flex items-center gap-4 mb-2">
                         <span className="w-10 h-px bg-wedding-gold" />
                         <p className="font-bold wedding-display text-wedding-burgundy uppercase tracking-[0.2em] text-sm">
-                          Hôn lễ cử hành tại Tư gia
+                          {t("profile.ceremonyAtHome")}
                         </p>
                       </div>
                       <div className="flex items-center gap-5 ml-2">
@@ -237,14 +239,14 @@ const ProfileSection = ({ guestName }: ProfileSectionProps) => {
                           <Clock className="w-6 h-6 text-wedding-gold" />
                         </div>
                         <p className="text-2xl md:text-3xl font-medium">
-                          08h00 - Chủ Nhật
+                          08h00 - {t("profile.sunday")}
                         </p>
                       </div>
                       <p className="text-lg md:text-xl ml-16 text-wedding-burgundy/80 font-display">
                         24 . 05 . 2026
                       </p>
                       <p className="text-sm text-muted-foreground ml-16 italic">
-                        (08/04 Âm lịch năm Bính Ngọ)
+                        {t("profile.lunarDateBride")}
                       </p>
                     </div>
 
@@ -252,7 +254,7 @@ const ProfileSection = ({ guestName }: ProfileSectionProps) => {
                       <div className="flex items-center gap-4 mb-2">
                         <span className="w-10 h-px bg-wedding-gold" />
                         <p className="font-bold wedding-display text-wedding-burgundy uppercase tracking-[0.2em] text-sm">
-                          Tiệc mừng tại Tư gia
+                          {t("profile.receptionAtHome")}
                         </p>
                       </div>
                       <div className="flex items-center gap-5 ml-2">
@@ -260,7 +262,7 @@ const ProfileSection = ({ guestName }: ProfileSectionProps) => {
                           <Clock className="w-6 h-6 text-wedding-gold" />
                         </div>
                         <p className="text-2xl md:text-3xl font-medium">
-                          11h00 Sáng
+                          11h00 {t("profile.morning")}
                         </p>
                       </div>
                       <div className="flex items-start gap-5 ml-2">
@@ -280,7 +282,7 @@ const ProfileSection = ({ guestName }: ProfileSectionProps) => {
                     rel="noopener noreferrer"
                     className="mt-12 flex items-center justify-center gap-3 bg-wedding-gold/10 hover:bg-wedding-gold text-wedding-gold hover:text-white py-4 rounded-xl transition-all duration-500 text-xs md:text-sm uppercase tracking-[0.3em] font-bold"
                   >
-                    <MapPin className="w-4 h-4" /> Xem bản đồ trực tuyến
+                    <MapPin className="w-4 h-4" /> {t("profile.viewMap")}
                   </a>
                 </div>
               </ScrollReveal>
@@ -291,12 +293,10 @@ const ProfileSection = ({ guestName }: ProfileSectionProps) => {
             <div className="max-w-2xl mx-auto bg-white/60 backdrop-blur-md p-6 md:p-12 rounded-3xl border border-wedding-gold/30 shadow-xl text-center">
               <Heart className="w-16 h-16 text-wedding-gold mx-auto mb-6 animate-pulse fill-wedding-gold/20" />
               <h3 className="wedding-script text-4xl wedding-gold-text mb-6">
-                Trân trọng cảm ơn
+                {t("profile.thankYou")}
               </h3>
               <p className="wedding-body text-base md:text-lg text-foreground/80 leading-relaxed italic">
-                Cảm ơn bạn đã ghé thăm và gửi những lời chúc tốt đẹp nhất dành
-                cho ngày trọng đại của chúng mình. Sự quan tâm của bạn là nguồn
-                động viên vô cùng to lớn đối với gia đình.
+                {t("profile.thankYouDesc")}
               </p>
             </div>
           </ScrollReveal>

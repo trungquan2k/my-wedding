@@ -6,8 +6,9 @@ import { supabase } from "@/lib/supabase";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useToast } from "@/hooks/use-toast";
 import { formatDistanceToNow } from "date-fns";
-import { vi } from "date-fns/locale";
+import { vi, enUS } from "date-fns/locale";
 import FloatingHearts from "./FloatingHearts";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface Wish {
   id?: number;
@@ -31,6 +32,7 @@ const BAD_WORDS = [
 ];
 
 const WishesSection = () => {
+  const { t, language } = useLanguage();
   const queryClient = useQueryClient();
   const { toast } = useToast();
   const [name, setName] = useState("");
@@ -57,8 +59,8 @@ const WishesSection = () => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["wishes"] });
       toast({
-        title: "Gửi lời chúc thành công!",
-        description: "Cảm ơn bạn đã gửi lời chúc đến chúng mình.",
+        title: language === 'vi' ? "Gửi lời chúc thành công!" : "Wishes sent successfully!",
+        description: language === 'vi' ? "Cảm ơn bạn đã gửi lời chúc đến chúng mình." : "Thank you for sending your wishes to us.",
       });
       setName("");
       setMessage("");
@@ -66,8 +68,8 @@ const WishesSection = () => {
     onError: (error) => {
       console.error("Error sending wish:", error);
       toast({
-        title: "Có lỗi xảy ra",
-        description: "Lời chúc của bạn chưa được gửi. Vui lòng thử lại sau.",
+        title: language === 'vi' ? "Có lỗi xảy ra" : "An error occurred",
+        description: language === 'vi' ? "Lời chúc của bạn chưa được gửi. Vui lòng thử lại sau." : "Your wish could not be sent. Please try again later.",
         variant: "destructive",
       });
     },
@@ -80,35 +82,25 @@ const WishesSection = () => {
     // 1. Mandatory fields
     if (!trimmedName || !trimmedMessage) {
       toast({
-        title: "Thông tin không đầy đủ",
-        description: "Vui lòng nhập tên và lời chúc của bạn.",
+        title: language === 'vi' ? "Thông tin không đầy đủ" : "Incomplete information",
+        description: language === 'vi' ? "Vui lòng nhập tên và lời chúc của bạn." : "Please enter your name and message.",
         variant: "destructive",
       });
       return false;
     }
 
-    // 2. Duplicate name warning (check against the most recent wish)
-    const wishes = wishesData?.data || [];
-    if (wishes.length > 0 && wishes[0].name.toLowerCase() === trimmedName.toLowerCase()) {
-      toast({
-        title: "Cảnh báo",
-        description: "Bạn vừa gửi một lời chúc với tên này. Bạn có chắc muốn gửi tiếp?",
-      });
-      // We still allow it but just warn, or we could block it if the user meant absolute duplicate check
-    }
-
-    // 3. Word limit (100 words)
+    // 2. Word limit (100 words)
     const wordCount = trimmedMessage.split(/\s+/).filter(w => w.length > 0).length;
     if (wordCount > 100) {
       toast({
-        title: "Lời chúc quá dài",
-        description: "Vui lòng giữ lời chúc dưới 100 chữ để thiệp được đẹp nhé.",
+        title: language === 'vi' ? "Lời chúc quá dài" : "Message too long",
+        description: language === 'vi' ? "Vui lòng giữ lời chúc dưới 100 chữ để thiệp được đẹp nhé." : "Please keep your wishes under 100 words.",
         variant: "destructive",
       });
       return false;
     }
 
-    // 4. Bad words filter (Simple contains check)
+    // 3. Bad words filter (Simple contains check)
     const hasBadWords = BAD_WORDS.some(word => 
       trimmedMessage.toLowerCase().includes(word.toLowerCase()) || 
       trimmedName.toLowerCase().includes(word.toLowerCase())
@@ -116,8 +108,8 @@ const WishesSection = () => {
     
     if (hasBadWords) {
       toast({
-        title: "Lời chúc không hợp lệ",
-        description: "Vui lòng sử dụng ngôn từ lịch sự, phù hợp với thuần phong mỹ tục.",
+        title: language === 'vi' ? "Lời chúc không hợp lệ" : "Invalid message",
+        description: language === 'vi' ? "Vui lòng sử dụng ngôn từ lịch sự, phù hợp với thuần phong mỹ tục." : "Please use polite language.",
         variant: "destructive",
       });
       return false;
@@ -148,10 +140,10 @@ const WishesSection = () => {
       <div className="max-w-2xl mx-auto text-center px-4 relative z-10">
         <ScrollReveal>
           <p className="wedding-script text-3xl md:text-4xl wedding-gold-text mb-2">
-            Sổ lưu bút
+            {t("wishes.title")}
           </p>
           <p className="text-muted-foreground wedding-body text-lg mb-12">
-            Guestbook
+            {t("wishes.subtitle")}
           </p>
         </ScrollReveal>
 
@@ -159,7 +151,7 @@ const WishesSection = () => {
           <form onSubmit={handleSubmit} className="mb-12 text-left space-y-4 bg-white/40 p-6 rounded-lg backdrop-blur-sm shadow-sm border border-wedding-gold/10">
             <input
               type="text"
-              placeholder="Tên của bạn"
+              placeholder={t("wishes.form.name")}
               value={name}
               onChange={(e) => setName(e.target.value)}
               className="w-full px-4 py-3 border border-border rounded-sm bg-background/80 wedding-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring/50"
@@ -167,7 +159,7 @@ const WishesSection = () => {
             />
             <div className="relative">
               <textarea
-                placeholder="Gửi lời chúc đến cô dâu & chú rể..."
+                placeholder={language === 'vi' ? "Gửi lời chúc đến cô dâu & chú rể..." : "Send your wishes to the bride & groom..."}
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 rows={3}
@@ -175,7 +167,7 @@ const WishesSection = () => {
                 disabled={mutation.isPending}
               />
               <span className={`absolute bottom-2 right-2 text-[10px] wedding-body ${currentWordCount > 100 ? 'text-destructive font-bold' : 'text-muted-foreground'}`}>
-                {currentWordCount}/100 chữ
+                {currentWordCount}/100 {language === 'vi' ? 'chữ' : 'words'}
               </span>
             </div>
             <button
@@ -188,7 +180,7 @@ const WishesSection = () => {
               ) : (
                 <Send className="w-4 h-4" />
               )}
-              Gửi lời chúc
+              {mutation.isPending ? t("wishes.form.sending") : t("wishes.form.submit")}
             </button>
           </form>
         </ScrollReveal>
@@ -201,7 +193,7 @@ const WishesSection = () => {
             </div>
           ) : isError ? (
             <p className="text-muted-foreground">
-              Không thể tải lời chúc lúc này.
+              {language === 'vi' ? 'Không thể tải lời chúc lúc này.' : 'Could not load wishes at this time.'}
             </p>
           ) : displayedWishes.length > 0 ? (
             <>
@@ -216,9 +208,9 @@ const WishesSection = () => {
                         {w.created_at
                           ? formatDistanceToNow(new Date(w.created_at), {
                               addSuffix: true,
-                              locale: vi,
+                              locale: language === 'vi' ? vi : enUS,
                             })
-                          : "Vừa xong"}
+                          : language === 'vi' ? "Vừa xong" : "Just now"}
                       </span>
                     </div>
                     <p className="text-foreground wedding-body leading-relaxed">
@@ -235,7 +227,7 @@ const WishesSection = () => {
                       to="/wishes"
                       className="inline-flex items-center gap-2 px-6 py-2 border border-wedding-gold text-wedding-gold hover:bg-wedding-gold hover:text-white transition-all rounded-full wedding-body text-sm font-medium tracking-widest group"
                     >
-                      Xem tất cả lời chúc ({totalCount})
+                      {language === 'vi' ? `Xem tất cả lời chúc (${totalCount})` : `View all wishes (${totalCount})`}
                       <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                     </Link>
                   </div>
@@ -244,7 +236,7 @@ const WishesSection = () => {
             </>
           ) : (
             <p className="text-muted-foreground wedding-body italic py-8">
-              Chưa có lời chúc nào. Hãy là người đầu tiên gửi lời chúc nhé!
+              {language === 'vi' ? 'Chưa có lời chúc nào. Hãy là người đầu tiên gửi lời chúc nhé!' : 'No wishes yet. Be the first to send one!'}
             </p>
           )}
         </div>

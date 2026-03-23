@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
-import { Copy, CreditCard } from "lucide-react";
+import { Copy } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useLanguage } from "@/context/LanguageContext";
 
 const BankingCard = ({ 
   owner, 
@@ -17,14 +18,17 @@ const BankingCard = ({
   type: "bride" | "groom";
 }) => {
   const { toast } = useToast();
+  const { t } = useLanguage();
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(accountNumber);
     toast({
-      title: "Đã sao chép",
-      description: `Số tài khoản của ${owner} đã được sao chép vào bộ nhớ tạm.`,
+      title: t("gift.copied"),
+      description: `${t("gift.accountNumber")} ${owner} ${language === 'vi' ? 'đã được sao chép' : 'has been copied'}`,
     });
   };
+
+  const { language } = useLanguage();
 
   return (
     <div className="bg-white/80 backdrop-blur-md rounded-2xl p-8 border border-wedding-gold/20 shadow-xl flex flex-col items-center group">
@@ -39,7 +43,7 @@ const BankingCard = ({
       
       <div className="text-center w-full">
         <p className="wedding-body text-wedding-gold uppercase tracking-[0.2em] text-xs mb-2">
-          {type === "bride" ? "Mừng cưới cô dâu" : "Mừng cưới chú rể"}
+          {type === "bride" ? t("gift.brideSide") : t("gift.groomSide")}
         </p>
         <h4 className="wedding-display text-xl wedding-burgundy-text font-semibold mb-1 uppercase">
           {owner}
@@ -54,7 +58,7 @@ const BankingCard = ({
             <button 
               onClick={copyToClipboard}
               className="p-1.5 hover:bg-wedding-gold/10 rounded-full transition-colors text-wedding-gold"
-              title="Sao chép số tài khoản"
+              title={language === 'vi' ? 'Sao chép số tài khoản' : 'Copy account number'}
             >
               <Copy className="w-4 h-4" />
             </button>
@@ -66,16 +70,17 @@ const BankingCard = ({
 };
 
 const GiftSection = () => {
+  const { t } = useLanguage();
   return (
     <section id="gift" className="py-24 md:py-32 bg-wedding-cream/30 relative">
       <div className="max-w-4xl mx-auto px-4">
         <ScrollReveal>
           <div className="text-center mb-16">
             <h2 className="wedding-script text-4xl md:text-5xl wedding-gold-text mb-4">
-              Hộp Quà Mừng
+              {t("gift.title")}
             </h2>
             <p className="wedding-body text-muted-foreground italic max-w-lg mx-auto leading-relaxed">
-              Sự hiện diện của bạn là món quà lớn nhất đối với chúng mình. Nếu bạn muốn gửi thêm lời chúc mừng, có thể gửi qua tài khoản dưới đây.
+              {t("gift.description")}
             </p>
             <div className="w-24 h-px bg-wedding-gold/30 mx-auto mt-8" />
           </div>

@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Heart, Flower2, User } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
+import { LanguageSwitch } from "./LanguageSwitch";
 
 interface CurtainIntroProps {
   onOpen?: (name: string) => void;
@@ -13,6 +15,7 @@ const Ornament = ({ className }: { className?: string }) => (
 );
 
 const CurtainIntro = ({ onOpen }: CurtainIntroProps) => {
+  const { t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [shouldRender, setShouldRender] = useState(true);
   const [nameInput, setNameInput] = useState("");
@@ -41,6 +44,11 @@ const CurtainIntro = ({ onOpen }: CurtainIntroProps) => {
     <div
       className={`fixed inset-0 z-[100] flex overflow-hidden ${isOpen ? "pointer-events-none" : ""}`}
     >
+      {/* Language Switch for Intro */}
+      <div className="absolute top-6 right-6 z-[110]">
+        {!isOpen && <LanguageSwitch scrolled={false} />}
+      </div>
+
       {/* Beautiful Floating Alert */}
       <AnimatePresence>
         {showWarning && (
@@ -54,7 +62,7 @@ const CurtainIntro = ({ onOpen }: CurtainIntroProps) => {
               <Heart className="w-4 h-4 text-wedding-burgundy fill-wedding-burgundy animate-pulse" />
             </div>
             <span className="wedding-body text-wedding-burgundy font-medium text-sm tracking-wide">
-              Vui lòng nhập tên để mở thiệp nhé ❤️
+              {t("curtain.warning")}
             </span>
           </motion.div>
         )}
@@ -127,7 +135,7 @@ const CurtainIntro = ({ onOpen }: CurtainIntroProps) => {
                 <div className="relative">
                   <input
                     type="text"
-                    placeholder="Nhập tên của bạn..."
+                    placeholder={t("curtain.placeholder")}
                     value={nameInput}
                     onChange={(e) => setNameInput(e.target.value)}
                     className="w-full pl-12 py-4 bg-white/10 border border-wedding-gold/30 rounded-full text-white placeholder:text-white/40 focus:outline-none focus:border-wedding-gold/60 transition-all wedding-body tracking-wider backdrop-blur-md relative z-0"
@@ -169,7 +177,7 @@ const CurtainIntro = ({ onOpen }: CurtainIntroProps) => {
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.2)_0%,transparent_70%)]" />
 
                   <span className="wedding-script text-white text-4xl mb-1 mt-2 tracking-wide drop-shadow-md">
-                    Mở Thiệp
+                    {t("curtain.open")}
                   </span>
                   <Heart className="w-8 h-8 text-wedding-burgundy fill-wedding-burgundy animate-float" />
                   <span className="wedding-body text-white/95 text-xs tracking-[0.3em] mt-3 uppercase font-medium">

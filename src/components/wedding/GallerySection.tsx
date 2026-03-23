@@ -19,12 +19,15 @@ import img14 from "@/assets/KENN1018.jpg";
 import img15 from "@/assets/KENN1039.jpg";
 import img16 from "@/assets/KENN1103.jpg";
 
+import { useLanguage } from "@/context/LanguageContext";
+
 const photos = [
   img1, img2, img3, img4, img5, img6, img7, img8,
   img9, img10, img11, img12, img13, img14, img15, img16
 ];
 
 const GallerySection = () => {
+  const { t } = useLanguage();
   const [lightbox, setLightbox] = useState<number | null>(null);
 
   const go = (dir: number) => {
@@ -38,10 +41,10 @@ const GallerySection = () => {
         <div className="max-w-6xl mx-auto px-4">
           <ScrollReveal>
             <p className="wedding-script text-3xl md:text-4xl wedding-gold-text text-center mb-2">
-              Album ảnh cưới
+              {t("gallery.title")}
             </p>
             <p className="text-center text-muted-foreground wedding-body text-lg mb-14">
-              Our Moments
+              {t("gallery.subtitle")}
             </p>
           </ScrollReveal>
 
