@@ -12,7 +12,7 @@ const FooterSection = () => (
       </p>
       <Heart className="w-5 h-5 text-wedding-gold fill-wedding-gold mx-auto" />
       <p className="mt-6 text-sm text-white/40">
-        Văn A & Thị B — 15.06.2026
+        Trung Quân & Yến Nhi — 26.05.2026
       </p>
     </ScrollReveal>
   </footer>

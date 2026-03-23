@@ -4,27 +4,57 @@ import LoveStorySection from "@/components/wedding/LoveStorySection";
 import GallerySection from "@/components/wedding/GallerySection";
 import ParallaxBanner from "@/components/wedding/ParallaxBanner";
 import CountdownSection from "@/components/wedding/CountdownSection";
-import DetailsSection from "@/components/wedding/DetailsSection";
 import WishesSection from "@/components/wedding/WishesSection";
 import FooterSection from "@/components/wedding/FooterSection";
-import bannerImg from "@/assets/wedding-couple-5.jpg";
+import CurtainIntro from "@/components/wedding/CurtainIntro";
+import ProfileSection from "@/components/wedding/ProfileSection";
+import bannerImg from "@/assets/KENN0574.jpg";
+import GiftSection from "@/components/wedding/GiftSection";
+import { useState, useEffect } from "react";
 
-const Index = () => (
-  <main className="overflow-x-hidden">
-    <NavBar />
-    <HeroSection />
-    <LoveStorySection />
-    <GallerySection />
-    <ParallaxBanner
-      image={bannerImg}
-      text="Hạnh phúc là khi ta tìm thấy nhau"
-      subtext="Forever begins with us"
-    />
-    <CountdownSection />
-    <DetailsSection />
-    <WishesSection />
-    <FooterSection />
-  </main>
-);
+const Index = () => {
+  const [isLocked, setIsLocked] = useState(true);
+
+  useEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    if (isLocked) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: "instant" });
+      }, 0);
+    }
+  }, [isLocked]);
+
+
+
+
+  return (
+    <main className="overflow-x-hidden relative">
+      <CurtainIntro onOpen={() => setIsLocked(false)} />
+      <NavBar />
+      <HeroSection />
+      <ProfileSection />
+      <LoveStorySection />
+      <GallerySection />
+      <ParallaxBanner
+        image={bannerImg}
+        text="Hạnh phúc là khi ta tìm thấy nhau"
+        subtext="Forever begins with us"
+      />
+      <CountdownSection />
+      <GiftSection />
+      <WishesSection />
+      <FooterSection />
+    </main>
+  );
+};
 
 export default Index;

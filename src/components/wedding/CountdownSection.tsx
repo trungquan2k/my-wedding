@@ -1,10 +1,15 @@
 import { useEffect, useState } from "react";
 import ScrollReveal from "./ScrollReveal";
 
-const WEDDING_DATE = new Date("2026-06-15T10:00:00+07:00");
+const WEDDING_DATE = new Date("2026-05-26T10:30:00+07:00");
 
 const CountdownSection = () => {
-  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
 
   useEffect(() => {
     const calc = () => {
@@ -36,7 +41,7 @@ const CountdownSection = () => {
             Save the Date
           </p>
           <p className="wedding-display text-xl md:text-2xl font-medium text-foreground tracking-wide mb-10">
-            15 tháng 06, 2026
+            25 tháng 05, 2026
           </p>
         </ScrollReveal>
 

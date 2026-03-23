@@ -1,16 +1,19 @@
 import { motion } from "framer-motion";
 import { Heart, ChevronDown } from "lucide-react";
-import heroImg from "@/assets/wedding-hero.jpg";
+import heroImg from "@/assets/KENN0643.jpg";
 
 const HeroSection = () => {
   return (
     <section className="relative h-screen w-full overflow-hidden">
       {/* Full-bleed background photo */}
       <div className="absolute inset-0">
-        <img
+        <motion.img
+          initial={{ scale: 1.1 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 3, ease: "easeOut" }}
           src={heroImg}
           alt="Ảnh cưới"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover object-[center_25%]"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-black/60" />
       </div>
@@ -33,11 +36,11 @@ const HeroSection = () => {
           className="flex items-center gap-4 md:gap-6"
         >
           <h1 className="wedding-display text-4xl md:text-7xl font-semibold text-white drop-shadow-xl leading-[1.1]">
-            Văn A
+            Trung Quân
           </h1>
           <Heart className="w-6 h-6 md:w-8 md:h-8 text-wedding-gold fill-wedding-gold animate-float shrink-0" />
           <h1 className="wedding-display text-4xl md:text-7xl font-semibold text-white drop-shadow-xl leading-[1.1]">
-            Thị B
+            Yến Nhi
           </h1>
         </motion.div>
 
@@ -47,7 +50,7 @@ const HeroSection = () => {
           transition={{ duration: 0.8, delay: 1.0 }}
           className="wedding-display text-lg md:text-2xl text-white/80 mt-4 tracking-[0.2em] drop-shadow-md"
         >
-          15 . 06 . 2026
+          26 . 05 . 2026
         </motion.p>
 
         <motion.div
@@ -60,7 +63,9 @@ const HeroSection = () => {
             href="#story"
             className="flex flex-col items-center text-white/70 hover:text-white transition-colors"
           >
-            <span className="text-sm wedding-body tracking-widest uppercase mb-2">Khám phá</span>
+            <span className="text-sm wedding-body tracking-widest uppercase mb-2">
+              Khám phá
+            </span>
             <ChevronDown className="w-5 h-5 animate-bounce" />
           </a>
         </motion.div>

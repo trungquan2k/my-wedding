@@ -16,12 +16,12 @@ const ParallaxBanner = ({ image, text, subtext }: ParallaxBannerProps) => {
   const y = useTransform(scrollYProgress, [0, 1], ["-15%", "15%"]);
 
   return (
-    <div ref={ref} className="relative h-[50vh] md:h-[60vh] overflow-hidden">
+    <div ref={ref} className="relative h-[65vh] md:h-[85vh] overflow-hidden">
       <motion.img
         src={image}
         alt=""
         style={{ y }}
-        className="absolute inset-0 w-full h-[130%] object-cover"
+        className="absolute inset-0 w-full h-[150%] object-cover object-[center_20%]"
       />
       <div className="absolute inset-0 bg-black/40" />
       {(text || subtext) && (

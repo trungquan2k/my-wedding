@@ -5,8 +5,10 @@ const links = [
   { label: "Câu chuyện", href: "#story" },
   { label: "Album", href: "#gallery" },
   { label: "Lễ cưới", href: "#details" },
+  { label: "Mừng cưới", href: "#gift" },
   { label: "Lời chúc", href: "#wishes" },
 ];
+
 
 const NavBar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -35,7 +37,7 @@ const NavBar = () => {
             scrolled ? "wedding-gold-text" : "text-white drop-shadow-md"
           }`}
         >
-          V & T
+          Q & N
         </a>
         <div className="hidden md:flex items-center gap-8">
           {links.map((l) => (

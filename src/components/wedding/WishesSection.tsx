@@ -9,8 +9,16 @@ interface Wish {
 }
 
 const SAMPLE_WISHES: Wish[] = [
-  { name: "Nguyễn Thị Hoa", message: "Chúc hai bạn trăm năm hạnh phúc! 💕", time: "Vừa xong" },
-  { name: "Trần Văn Minh", message: "Chúc mừng hạnh phúc hai bạn nhé, mãi bên nhau!", time: "5 phút trước" },
+  {
+    name: "Nguyễn Thị Hoa",
+    message: "Chúc hai bạn trăm năm hạnh phúc! 💕",
+    time: "Vừa xong",
+  },
+  {
+    name: "Trần Văn Minh",
+    message: "Chúc mừng hạnh phúc hai bạn nhé, mãi bên nhau!",
+    time: "5 phút trước",
+  },
 ];
 
 const WishesSection = () => {
@@ -21,7 +29,10 @@ const WishesSection = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!name.trim() || !message.trim()) return;
-    setWishes((prev) => [{ name: name.trim(), message: message.trim(), time: "Vừa xong" }, ...prev]);
+    setWishes((prev) => [
+      { name: name.trim(), message: message.trim(), time: "Vừa xong" },
+      ...prev,
+    ]);
     setName("");
     setMessage("");
   };
@@ -69,8 +80,12 @@ const WishesSection = () => {
             <ScrollReveal key={i} delay={0.05 * i}>
               <div className="text-left p-5 bg-wedding-warm rounded-sm border border-border">
                 <div className="flex items-baseline justify-between mb-1">
-                  <span className="font-semibold wedding-display text-foreground">{w.name}</span>
-                  <span className="text-xs text-muted-foreground">{w.time}</span>
+                  <span className="font-semibold wedding-display text-foreground">
+                    {w.name}
+                  </span>
+                  <span className="text-xs text-muted-foreground">
+                    {w.time}
+                  </span>
                 </div>
                 <p className="text-foreground wedding-body">{w.message}</p>
               </div>

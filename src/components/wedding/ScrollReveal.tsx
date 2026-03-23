@@ -5,22 +5,42 @@ interface ScrollRevealProps {
   children: ReactNode;
   className?: string;
   delay?: number;
+  direction?: "up" | "down" | "left" | "right" | "none";
+  duration?: number;
+  rotate?: number;
 }
 
-const ScrollReveal = ({ children, className = "", delay = 0 }: ScrollRevealProps) => (
-  <motion.div
-    initial={{ opacity: 0, y: 16, filter: "blur(4px)" }}
-    whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-    viewport={{ once: true, amount: 0.2 }}
-    transition={{
-      duration: 0.7,
-      delay,
-      ease: [0.16, 1, 0.3, 1],
-    }}
-    className={className}
-  >
-    {children}
-  </motion.div>
-);
+const ScrollReveal = ({ 
+  children, 
+  className = "", 
+  delay = 0, 
+  direction = "up",
+  duration = 1.0,
+  rotate = 0
+}: ScrollRevealProps) => {
+  const variants = {
+    up: { y: 30, opacity: 0, rotate },
+    down: { y: -30, opacity: 0, rotate },
+    left: { x: 30, opacity: 0, rotate },
+    right: { x: -30, opacity: 0, rotate },
+    none: { opacity: 0, rotate },
+  };
+
+  return (
+    <motion.div
+      initial={variants[direction]}
+      whileInView={{ x: 0, y: 0, opacity: 1, rotate: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{
+        duration,
+        delay,
+        ease: [0.16, 1, 0.3, 1],
+      }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+};
 
 export default ScrollReveal;
