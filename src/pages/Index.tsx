@@ -14,6 +14,7 @@ import { useState, useEffect } from "react";
 
 const Index = () => {
   const [isLocked, setIsLocked] = useState(true);
+  const [guestName, setGuestName] = useState<string | null>(null);
 
   useEffect(() => {
     if ('scrollRestoration' in window.history) {
@@ -33,15 +34,17 @@ const Index = () => {
     }
   }, [isLocked]);
 
-
-
+  const handleOpen = (name: string) => {
+    setGuestName(name);
+    setIsLocked(false);
+  };
 
   return (
     <main className="overflow-x-hidden relative">
-      <CurtainIntro onOpen={() => setIsLocked(false)} />
+      <CurtainIntro onOpen={handleOpen} />
       <NavBar />
       <HeroSection />
-      <ProfileSection />
+      <ProfileSection guestName={guestName} />
       <LoveStorySection />
       <GallerySection />
       <ParallaxBanner
@@ -56,5 +59,6 @@ const Index = () => {
     </main>
   );
 };
+
 
 export default Index;

@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Heart, Flower2 } from "lucide-react";
+import { Heart, Flower2, User } from "lucide-react";
 
 interface CurtainIntroProps {
-  onOpen?: () => void;
+  onOpen?: (name: string) => void;
 }
 
 const Ornament = ({ className }: { className?: string }) => (
@@ -15,10 +15,18 @@ const Ornament = ({ className }: { className?: string }) => (
 const CurtainIntro = ({ onOpen }: CurtainIntroProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [shouldRender, setShouldRender] = useState(true);
+  const [nameInput, setNameInput] = useState("");
+  const [showWarning, setShowWarning] = useState(false);
 
   const handleOpen = () => {
+    const trimmed = nameInput.trim();
+    if (!trimmed) {
+      setShowWarning(true);
+      setTimeout(() => setShowWarning(false), 3000);
+      return;
+    }
     setIsOpen(true);
-    if (onOpen) onOpen();
+    if (onOpen) onOpen(trimmed);
     setTimeout(() => setShouldRender(false), 2000);
   };
 
@@ -26,11 +34,32 @@ const CurtainIntro = ({ onOpen }: CurtainIntroProps) => {
 
   const curtainStyle = {
     backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255,255,255,0.05) 1px, transparent 0)`,
-    backgroundSize: '24px 24px'
+    backgroundSize: "24px 24px",
   };
 
   return (
-    <div className={`fixed inset-0 z-[100] flex overflow-hidden ${isOpen ? 'pointer-events-none' : ''}`}>
+    <div
+      className={`fixed inset-0 z-[100] flex overflow-hidden ${isOpen ? "pointer-events-none" : ""}`}
+    >
+      {/* Beautiful Floating Alert */}
+      <AnimatePresence>
+        {showWarning && (
+          <motion.div
+            initial={{ opacity: 0, y: -50, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -20, scale: 0.9 }}
+            className="absolute top-10 left-1/2 -translate-x-1/2 z-[110] px-6 py-3 bg-white/90 backdrop-blur-md border border-wedding-gold/30 rounded-full shadow-2xl flex items-center gap-3 min-w-[280px] justify-center"
+          >
+            <div className="w-8 h-8 rounded-full bg-wedding-burgundy/10 flex items-center justify-center">
+              <Heart className="w-4 h-4 text-wedding-burgundy fill-wedding-burgundy animate-pulse" />
+            </div>
+            <span className="wedding-body text-wedding-burgundy font-medium text-sm tracking-wide">
+              Vui lòng nhập tên để mở thiệp nhé ❤️
+            </span>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Left Curtain */}
       <motion.div
         initial={{ x: 0 }}
@@ -47,7 +76,7 @@ const CurtainIntro = ({ onOpen }: CurtainIntroProps) => {
           <div className="absolute inset-x-0 top-4 h-px bg-wedding-gold/20" />
           <div className="absolute inset-x-0 bottom-4 h-px bg-wedding-gold/20" />
         </div>
-        
+
         {/* Big circular pattern */}
         <div className="absolute inset-0 flex items-center justify-end pr-10 opacity-10 pointer-events-none">
           <div className="w-96 h-96 border-[12px] border-wedding-gold rounded-full rotate-45 transform translate-x-1/2 scale-150" />
@@ -87,40 +116,73 @@ const CurtainIntro = ({ onOpen }: CurtainIntroProps) => {
             transition={{ duration: 0.8 }}
             className="absolute inset-0 flex flex-col items-center justify-center z-10"
           >
-            <div className="relative group">
-              {/* Outer Glows */}
-              <div className="absolute -inset-24 bg-wedding-gold/20 blur-[80px] rounded-full animate-pulse" />
-              
-              {/* Decorative Rings */}
-              <motion.div 
-                animate={{ rotate: 360 }}
-                transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-                className="absolute -inset-20 border-[0.5px] border-wedding-gold/30 rounded-full"
-              />
-              <motion.div 
-                animate={{ rotate: -360 }}
-                transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-                className="absolute -inset-16 border-[0.5px] border-wedding-gold/50 border-dashed rounded-full"
-              />
-
-              {/* Main Button (Seal) */}
-              <button
-                onClick={handleOpen}
-                className="relative flex flex-col items-center justify-center w-52 h-52 bg-wedding-gold rounded-full shadow-[0_0_50px_rgba(212,175,55,0.4)] hover:shadow-[0_0_80px_rgba(212,175,55,0.6)] transition-all duration-700 active:scale-95 group overflow-hidden border-4 border-white/20"
+            <div className="relative group flex flex-col items-center gap-12">
+              {/* Name Input */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+                className="w-full max-w-xl relative z-20"
               >
-                {/* Texture on button */}
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.2)_0%,transparent_70%)]" />
-                
-                <span className="wedding-script text-white text-4xl mb-1 mt-2 tracking-wide drop-shadow-md">Mở Thiệp</span>
-                <Heart className="w-8 h-8 text-wedding-burgundy fill-wedding-burgundy animate-float" />
-                <span className="wedding-body text-white/95 text-xs tracking-[0.3em] mt-3 uppercase font-medium">Wedding</span>
-                
-                {/* Hover Shine Animation */}
-                <div className="absolute top-0 -left-[150%] w-[100%] h-full bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-[35deg] group-hover:left-[150%] transition-all duration-[1200ms] ease-in-out" />
-              </button>
+                <div className="relative">
+                  <input
+                    type="text"
+                    placeholder="Nhập tên của bạn..."
+                    value={nameInput}
+                    onChange={(e) => setNameInput(e.target.value)}
+                    className="w-full pl-12 py-4 bg-white/10 border border-wedding-gold/30 rounded-full text-white placeholder:text-white/40 focus:outline-none focus:border-wedding-gold/60 transition-all wedding-body tracking-wider backdrop-blur-md relative z-0"
+                  />
+                  <User className="absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 text-wedding-gold z-10 pointer-events-none drop-shadow-sm" />
+                </div>
+              </motion.div>
+
+              <div className="relative group">
+                {/* Outer Glows */}
+                <div className="absolute -inset-24 bg-wedding-gold/20 blur-[80px] rounded-full animate-pulse" />
+
+                {/* Decorative Rings */}
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{
+                    duration: 30,
+                    repeat: Infinity,
+                    ease: "linear",
+                  }}
+                  className="absolute -inset-20 border-[0.5px] border-wedding-gold/30 rounded-full"
+                />
+                <motion.div
+                  animate={{ rotate: -360 }}
+                  transition={{
+                    duration: 40,
+                    repeat: Infinity,
+                    ease: "linear",
+                  }}
+                  className="absolute -inset-16 border-[0.5px] border-wedding-gold/50 border-dashed rounded-full"
+                />
+
+                {/* Main Button (Seal) */}
+                <button
+                  onClick={handleOpen}
+                  className="relative flex flex-col items-center justify-center w-52 h-52 bg-wedding-gold rounded-full shadow-[0_0_50px_rgba(212,175,55,0.4)] hover:shadow-[0_0_80px_rgba(212,175,55,0.6)] transition-all duration-700 active:scale-95 group overflow-hidden border-4 border-white/20"
+                >
+                  {/* Texture on button */}
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.2)_0%,transparent_70%)]" />
+
+                  <span className="wedding-script text-white text-4xl mb-1 mt-2 tracking-wide drop-shadow-md">
+                    Mở Thiệp
+                  </span>
+                  <Heart className="w-8 h-8 text-wedding-burgundy fill-wedding-burgundy animate-float" />
+                  <span className="wedding-body text-white/95 text-xs tracking-[0.3em] mt-3 uppercase font-medium">
+                    Wedding
+                  </span>
+
+                  {/* Hover Shine Animation */}
+                  <div className="absolute top-0 -left-[150%] w-[100%] h-full bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-[35deg] group-hover:left-[150%] transition-all duration-[1200ms] ease-in-out" />
+                </button>
+              </div>
             </div>
-            
-            <motion.div 
+
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
@@ -143,7 +205,7 @@ const CurtainIntro = ({ onOpen }: CurtainIntroProps) => {
         <>
           {/* Depth vignette */}
           <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_50%_50%,transparent_0%,rgba(0,0,0,0.5)_100%)] z-[5]" />
-          
+
           {/* Edge highlights */}
           <div className="absolute inset-y-0 left-1/2 -translate-x-[1px] w-[2px] bg-gradient-to-b from-wedding-gold/10 via-wedding-gold/60 to-wedding-gold/10 z-[5]" />
         </>

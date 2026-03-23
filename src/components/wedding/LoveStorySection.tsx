@@ -1,27 +1,41 @@
 import { motion } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
-import coupleImg1 from "@/assets/KENN0587.jpg";
-import coupleImg2 from "@/assets/KENN0608.jpg";
-import img3 from "@/assets/KENN0981.jpg";
+import mylove from "@/assets/mylove.jpg";
+import newLove from "@/assets/new.jpg";
+import firstDate from "@/assets/firstdate.jpg";
+import birthDay from "@/assets/my-second-birth.jpg";
+import img3 from "@/assets/KENN1039.jpg";
 import img4 from "@/assets/KENN0990.jpg";
 
 const stories = [
   {
-    image: coupleImg1,
-    title: "Lần đầu gặp gỡ",
+    image: firstDate,
+    title: "Lần đầu yêu nhau",
     date: "10 / 2019",
     text: "Bắt đầu trò chuyện với nhau thâu đêm suốt sáng.",
   },
   {
-    image: coupleImg2,
-    title: "Lời cầu hôn",
-    date: "12 / 2025",
-    text: "Dưới bầu trời đầy sao, anh đã quỳ gối và nói những lời chân thành nhất. Và em đã gật đầu.",
+    image: birthDay,
+    title: "Sinh nhật cùng nhau",
+    date: "11 / 2020",
+    text: "Cùng anh đón sinh nhật",
+  },
+  {
+    image: newLove,
+    title: "Lời tỏ tình",
+    date: "02 / 2020",
+    text: "Lời tỏ tình đầy ngại ngùng khi còn đang đi học tại kí túc xá",
+  },
+  {
+    image: mylove,
+    title: "Lễ dặm ngõ",
+    date: "02 / 2026",
+    text: "2 Gia đình chính thức gặp nhau. Lời dặm ngõ của 2 gia đình",
   },
   {
     image: img3,
     title: "Ngày cưới",
-    date: "05 / 2026",
+    date: "26 / 05 / 2026",
     text: "Hành trình yêu của chúng mình khép lại bằng một đám cưới trong mơ. Cảm ơn vì đã luôn ở bên nhau.",
   },
   {
