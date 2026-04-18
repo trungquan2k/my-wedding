@@ -18,18 +18,12 @@ const CurtainIntro = ({ onOpen }: CurtainIntroProps) => {
   const { t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [shouldRender, setShouldRender] = useState(true);
-  const [nameInput, setNameInput] = useState("");
+  // const [nameInput, setNameInput] = useState("");
   const [showWarning, setShowWarning] = useState(false);
 
   const handleOpen = () => {
-    const trimmed = nameInput.trim();
-    if (!trimmed) {
-      setShowWarning(true);
-      setTimeout(() => setShowWarning(false), 3000);
-      return;
-    }
+    if (onOpen) onOpen("");
     setIsOpen(true);
-    if (onOpen) onOpen(trimmed);
     setTimeout(() => setShouldRender(false), 2000);
   };
 
@@ -126,7 +120,7 @@ const CurtainIntro = ({ onOpen }: CurtainIntroProps) => {
           >
             <div className="relative group flex flex-col items-center gap-12">
               {/* Name Input */}
-              <motion.div
+              {/* <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
@@ -142,7 +136,7 @@ const CurtainIntro = ({ onOpen }: CurtainIntroProps) => {
                   />
                   <User className="absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 text-wedding-gold z-10 pointer-events-none drop-shadow-sm" />
                 </div>
-              </motion.div>
+              </motion.div> */}
 
               <div className="relative group">
                 {/* Outer Glows */}
@@ -174,7 +168,7 @@ const CurtainIntro = ({ onOpen }: CurtainIntroProps) => {
                   className="relative flex flex-col items-center justify-center w-52 h-52 bg-wedding-gold rounded-full shadow-[0_0_50px_rgba(212,175,55,0.4)] hover:shadow-[0_0_80px_rgba(212,175,55,0.6)] transition-all duration-700 active:scale-95 group overflow-hidden border-4 border-white/20"
                 >
                   {/* Texture on button */}
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.2)_0%,transparent_70%)]" />
+                  <div className="absolute inset-0 bg-radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.2)_0% bg-transparent_70%)" />
 
                   <span className="wedding-script text-white text-4xl mb-1 mt-2 tracking-wide drop-shadow-md">
                     {t("curtain.open")}

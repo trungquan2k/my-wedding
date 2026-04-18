@@ -8,10 +8,11 @@ import WishesSection from "@/components/wedding/WishesSection";
 import FooterSection from "@/components/wedding/FooterSection";
 import CurtainIntro from "@/components/wedding/CurtainIntro";
 import ProfileSection from "@/components/wedding/ProfileSection";
-import bannerImg from "@/assets/KENN0574.jpg";
+import bannerImg from "@/assets/KENN0975.jpg";
 import GiftSection from "@/components/wedding/GiftSection";
 import { useState, useEffect } from "react";
 import { useLanguage } from "@/context/LanguageContext";
+import MusicPlayer from "@/components/wedding/MusicPlayer";
 
 const Index = () => {
   const { t } = useLanguage();
@@ -55,9 +56,11 @@ const Index = () => {
         subtext={t("parallax.subtext")}
       />
       <CountdownSection />
-      <GiftSection />
+      {/* <GiftSection /> */}
       <WishesSection />
       <FooterSection />
+
+      <MusicPlayer isLocked={isLocked} />
     </main>
   );
 };

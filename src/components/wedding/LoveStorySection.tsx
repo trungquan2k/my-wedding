@@ -73,7 +73,7 @@ const LoveStorySection = () => {
       <div className="relative">
         <motion.div
           className="flex gap-6 md:gap-8"
-          animate={{ x: [0, -1664] }} // We'll adjust this value based on card width
+          animate={{ x: [0, -2712] }}
           transition={{
             duration: 40,
             repeat: Infinity,
@@ -82,13 +82,13 @@ const LoveStorySection = () => {
           style={{ width: "fit-content" }}
         >
           {extendedStories.map((s, i) => (
-            <div key={i} className="w-[280px] md:w-[380px] flex-shrink-0">
+            <div key={i} className="w-[300px] md:w-[420px] flex-shrink-0">
               <div className="flex flex-col gap-5 p-4 md:p-6 bg-wedding-warm/30 rounded-sm border border-border-/50 hover:bg-wedding-warm/50 transition-colors h-full group">
-                <div className="relative overflow-hidden rounded-sm shadow-md aspect-video">
+                <div className="relative overflow-hidden rounded-sm shadow-md aspect-[3/2]">
                   <img
                     src={s.image}
                     alt={s.title}
-                    className="w-full h-full object-cover grayscale-[0.3] group-hover:grayscale-0 transition-all duration-700 group-hover:scale-[1.05]"
+                    className={`w-full h-full object-cover grayscale-[0.3] ${i === 4 || i === 5 ? "object-top" : ""} group-hover:grayscale-0 transition-all duration-700 group-hover:scale-[1.2]`}
                   />
                   <div className="absolute top-3 left-3 bg-wedding-gold px-3 py-1 text-[10px] tracking-[0.2em] text-white uppercase wedding-body">
                     {s.date}

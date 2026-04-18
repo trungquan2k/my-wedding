@@ -11,8 +11,8 @@ const NavBar = () => {
 
   const links = [
     { label: t("nav.story"), href: "#story" },
-    { label: t("nav.gallery"), href: "#gallery" },
     { label: t("nav.details"), href: "#details" },
+    { label: t("nav.gallery"), href: "#gallery" },
     { label: t("nav.gift"), href: "#gift" },
     { label: t("nav.wishes"), href: "#wishes" },
   ];
@@ -29,20 +29,18 @@ const NavBar = () => {
         initial={{ y: -60, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, delay: 1.6, ease: [0.16, 1, 0.3, 1] }}
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
-          scrolled || isMenuOpen
-            ? "bg-background/95 backdrop-blur-sm shadow-md py-3"
-            : "bg-transparent py-5"
-        }`}
+        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${scrolled || isMenuOpen
+          ? "bg-background/95 backdrop-blur-sm shadow-md py-3"
+          : "bg-transparent py-5"
+          }`}
       >
         <div className="max-w-5xl mx-auto px-4 flex items-center justify-between">
           <a
             href="#"
-            className={`wedding-script text-2xl transition-colors ${
-              scrolled || isMenuOpen
-                ? "wedding-gold-text"
-                : "text-white drop-shadow-md"
-            }`}
+            className={`wedding-script text-2xl transition-colors ${scrolled || isMenuOpen
+              ? "wedding-gold-text"
+              : "text-white drop-shadow-md"
+              }`}
           >
             Q & N
           </a>
@@ -53,11 +51,10 @@ const NavBar = () => {
               <a
                 key={l.href}
                 href={l.href}
-                className={`wedding-body text-sm tracking-widest uppercase transition-colors hover:opacity-100 ${
-                  scrolled
-                    ? "text-foreground/70 hover:text-foreground"
-                    : "text-white/70 hover:text-white drop-shadow-sm"
-                }`}
+                className={`wedding-body text-sm tracking-widest uppercase transition-colors hover:opacity-100 ${scrolled
+                  ? "text-foreground/70 hover:text-foreground"
+                  : "text-white/70 hover:text-white drop-shadow-sm"
+                  }`}
               >
                 {l.label}
               </a>
@@ -70,9 +67,8 @@ const NavBar = () => {
             <LanguageSwitch scrolled={scrolled || isMenuOpen} />
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className={`p-2 transition-colors ${
-                scrolled || isMenuOpen ? "text-wedding-gold" : "text-white"
-              }`}
+              className={`p-2 transition-colors ${scrolled || isMenuOpen ? "text-wedding-gold" : "text-white"
+                }`}
             >
               {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
