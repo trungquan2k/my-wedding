@@ -48,14 +48,13 @@ const MusicPlayer = ({ isLocked }: MusicPlayerProps) => {
           )}
         </button>
       </div>
-
       {/* Hidden YouTube Iframe */}
       {isPlaying && (
         <div className="fixed pointer-events-none opacity-0 -z-50 invisible">
           <iframe
             width="1"
             height="1"
-            src="https://www.youtube.com/embed/d1x84nMuJYA?autoplay=1&loop=1&playlist=d1x84nMuJYA,h-SdLmiEXko"
+            src="https://www.youtube.com/embed/d1x84nMuJYA?autoplay=1&loop=1&playlist=d1x84nMuJYA,h-SdLmiEXko,IOe0tNoUGv8,FTYKmwltAQ8"
             title="Wedding Music"
             allow="autoplay; encrypted-media"
           ></iframe>
