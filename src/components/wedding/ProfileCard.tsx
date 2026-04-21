@@ -60,10 +60,11 @@ const ProfileCard = ({
         <div className="relative mb-12 md:mb-16">
           <div className="absolute -inset-6 border border-wedding-gold/20 rounded-full scale-105 group-hover:scale-110 transition-transform duration-1000" />
           <div className="relative w-72 h-72 md:w-96 md:h-96 overflow-hidden rounded-full shadow-2xl z-10 border-8 border-white">
-            <img
+            <ProgressiveImage
               src={image}
               alt={name}
-              className={`w-full h-full object-cover ${imgPosition} ${imgScale} group-hover:scale-[1.15] transition-transform duration-1000`}
+              className="w-full h-full"
+              imgClassName={`${imgPosition} ${imgScale} group-hover:scale-[1.15]`}
             />
           </div>
           <div className={`absolute top-10 ${badgePosition === "right" ? "right-0 translate-x-4 -rotate-12" : "left-0 -translate-x-4 rotate-12"} z-20 bg-wedding-gold text-white px-4 py-2 rounded-full shadow-lg`}>

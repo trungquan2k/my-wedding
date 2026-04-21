@@ -66,6 +66,9 @@ const LoveStorySection = () => {
             {t("story.title")}
           </p>
           <p className="text-center text-muted-foreground wedding-body text-lg">
+            {t("story.subtitle1")}
+          </p>
+          <p className="text-center text-muted-foreground wedding-body text-lg">
             {t("story.subtitle")}
           </p>
         </ScrollReveal>

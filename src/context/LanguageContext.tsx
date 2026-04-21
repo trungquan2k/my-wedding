@@ -81,7 +81,8 @@ const translations: Record<Language, Record<string, string>> = {
 
     // LoveStorySection
     "story.title": "Chuyện tình yêu của chúng mình",
-    "story.subtitle": "Our Love Story",
+    "story.subtitle1": "Cảm ơn em đã đồng hành cùng anh trong suốt 6 năm. Và kết thúc năm thứ 7 với một cái kết viên mãn.",
+    "story.subtitle": "(Our Love Story)",
     "story.event1.title": "Lần đầu gặp nhau",
     "story.event1.text": "Mạnh dạn thấy em chơi ma xói cùng bạn bè. Tôi can đảm ra xem bắt đầu gửi kết bạn là nhắn ngõ lời trêu ghẹo nhưng không ai ngờ lại là định mệnh của nhau",
     "story.event1.date": "10 / 2019",
@@ -223,6 +224,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     // LoveStorySection
     "story.title": "Our Love Story",
+    "story.subtitle1": "Thank you for being with me for 6 years. And ending the 7th year with a happy ending.",
     "story.subtitle": "Our Love Story",
     "story.event1.title": "Our First Love",
     "story.event1.text": "Boldly saw her playing ma sôi with friends. I dared to come see, started by sending a friend request and teasing her, but never expected it to be our destiny.",

@@ -6,13 +6,15 @@ interface ProgressiveImageProps {
   placeholder?: string;
   className?: string;
   alt?: string;
+  imgClassName?: string;
 }
 
 const ProgressiveImage = ({
   src,
   placeholder = "https://placehold.co/20x20?text=...",
   className,
-  alt = ""
+  alt = "",
+  imgClassName = ""
 }: ProgressiveImageProps) => {
   const [imgSrc, setImgSrc] = useState(placeholder);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -33,6 +35,7 @@ const ProgressiveImage = ({
         alt={alt}
         className={cn(
           "w-full h-full object-cover transition-all duration-1000 ease-in-out",
+          imgClassName,
           !isLoaded ? "scale-110 blur-xl grayscale" : "scale-100 blur-0 grayscale-0"
         )}
         loading="lazy"
