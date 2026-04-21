@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { Heart, ChevronDown } from "lucide-react";
-import heroImg from "@/assets/KENN0643.jpg";
 import { useLanguage } from "@/context/LanguageContext";
 
 const HeroSection = () => {
@@ -13,7 +12,7 @@ const HeroSection = () => {
           initial={{ scale: 1.1 }}
           animate={{ scale: 1 }}
           transition={{ duration: 3, ease: "easeOut" }}
-          src={heroImg}
+          src="https://iili.io/BgQYWQ9.jpg"
           alt={t("hero.gettingMarried")}
           className="w-full h-full object-cover object-[center_25%]"
         />

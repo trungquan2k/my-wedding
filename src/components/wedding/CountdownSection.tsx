@@ -51,7 +51,7 @@ const CountdownSection = () => {
           {blocks.map((b, i) => (
             <ScrollReveal key={b.label} delay={0.08 * i}>
               <div className="flex flex-col items-center">
-                <div className="w-18 h-18 md:w-24 md:h-24 flex items-center justify-center bg-wedding-warm border border-border rounded-sm shadow-md">
+                <div className="w-18 h-18 p-5 md:w-24 md:h-24 flex items-center justify-center bg-wedding-warm border border-border rounded-sm shadow-md">
                   <span className="wedding-display text-2xl md:text-4xl font-semibold wedding-burgundy-text tabular-nums">
                     {String(b.value).padStart(2, "0")}
                   </span>

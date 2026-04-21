@@ -45,7 +45,7 @@ const ProfileSection = ({ guestName }: ProfileSectionProps) => {
         {isInvited ? (
           <div className="grid lg:grid-cols-2 gap-20 md:gap-32">
             <ProfileCard
-              image={groomImg}
+              image={"https://iili.io/BrOpjxR.jpg"}
               sideLabel={t("profile.groomSide")}
               name={t("profile.groomName")}
               title={t("profile.groomTitle")}
@@ -72,7 +72,7 @@ const ProfileSection = ({ guestName }: ProfileSectionProps) => {
             />
 
             <ProfileCard
-              image={brideImg}
+              image={"https://iili.io/Brj4rkF.jpg"}
               sideLabel={t("profile.brideSide")}
               name={t("profile.brideName")}
               title={t("profile.brideTitle")}
@@ -94,7 +94,8 @@ const ProfileSection = ({ guestName }: ProfileSectionProps) => {
               mapUrl="https://maps.app.goo.gl/546cZurhSAooApAT8"
               viewMapLabel={t("profile.viewMap")}
               scrollDirection="left"
-              imgPosition="object-[center_30%]"
+              imgPosition="object-[center_25%]"
+              imgScale="scale-[1.5]"
               badgePosition="left"
             />
           </div >

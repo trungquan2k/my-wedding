@@ -60,7 +60,9 @@ Page.displayName = "Page";
 const WeddingAlbum: React.FC<WeddingAlbumProps> = ({ photos }) => {
   const bookRef = useRef<any>(null);
   const [currentPage, setCurrentPage] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(
+    typeof window !== "undefined" ? window.innerWidth < 768 : false
+  );
   const [pageSize, setPageSize] = useState({ width: 340, height: 500 });
   const { t } = useLanguage();
   useEffect(() => {
@@ -179,7 +181,7 @@ const WeddingAlbum: React.FC<WeddingAlbumProps> = ({ photos }) => {
                 </Page>
 
                 {/* Content Pages */}
-                {photos.slice(1).map((src, i) => (
+                {photos.map((src, i) => (
                   <Page key={i} number={i + 1}>
                     <div className="w-full h-full flex flex-col items-center justify-center relative">
                       <div className="absolute top-4 right-4 w-12 h-12 opacity-[0.03] text-wedding-gold pointer-events-none">
@@ -206,11 +208,10 @@ const WeddingAlbum: React.FC<WeddingAlbumProps> = ({ photos }) => {
                       <div
                         className={`w-full ${i % 4 === 0 ? "h-[85%]" : "h-full"} p-0.5 bg-white shadow-2xl relative group/page transform transition-transform duration-700 hover:scale-[1.02]`}
                       >
-                        <img
+                        <ProgressiveImage
                           src={src}
                           className="w-full h-full object-cover"
                           alt={`Moment ${i + 1}`}
-                          loading="lazy"
                         />
                         <div className="absolute inset-0 bg-gradient-to-tr from-wedding-gold/10 to-transparent opacity-0 group-hover/page:opacity-100 transition-opacity duration-700 pointer-events-none" />
                       </div>
@@ -332,9 +333,7 @@ const WeddingAlbum: React.FC<WeddingAlbumProps> = ({ photos }) => {
 
           {/* Vertical Stream of Photos */}
           <div className="space-y-24">
-            {photos.slice(1).map((src, i) => {
-              // Alternate styles for a more dynamic look
-              const isLandscape = i % 3 === 0;
+            {photos.map((src, i) => {
               return (
                 <ScrollReveal
                   key={i}
@@ -343,7 +342,7 @@ const WeddingAlbum: React.FC<WeddingAlbumProps> = ({ photos }) => {
                 >
                   <div className="paper-texture p-3 rounded-md shadow-2xl relative group max-w-[92%] mx-auto ring-1 ring-wedding-gold/10">
                     <div className="absolute inset-0 border-[8px] border-white/40 pointer-events-none z-10" />
-                    <div className={`relative overflow-hidden ${isLandscape ? 'aspect-video' : 'aspect-[4/5.5]'}`}>
+                    <div className="relative overflow-hidden aspect-[4/5.5]">
                       <ProgressiveImage
                         src={src}
                         className="w-full h-full object-cover"

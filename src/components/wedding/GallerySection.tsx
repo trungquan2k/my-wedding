@@ -1,19 +1,19 @@
-import img1 from "@/assets/KENN0643.jpg";
-import img2 from "@/assets/KENN0674.jpg";
-import img3 from "@/assets/KENN0773.jpg";
-import img4 from "@/assets/KENN0794.jpg";
-import img5 from "@/assets/KENN0802.jpg";
-import img6 from "@/assets/KENN0945.jpg";
-import img7 from "@/assets/KENN0948.jpg";
-import img8 from "@/assets/KENN0957.jpg";
-import img9 from "@/assets/KENN0961.jpg";
-import img10 from "@/assets/KENN0975.jpg";
-import img11 from "@/assets/KENN0981.jpg";
-import img12 from "@/assets/KENN0990.jpg";
-import img13 from "@/assets/KENN1000.jpg";
-import img14 from "@/assets/KENN1018.jpg";
-import img15 from "@/assets/KENN1039.jpg";
-import img16 from "@/assets/KENN1103.jpg";
+const img1 = "https://iili.io/BgQYWQ9.jpg";
+const img2 = "https://iili.io/BgQaNnt.jpg";
+const img3 = "https://iili.io/BgDM799.jpg";
+const img4 = "https://iili.io/BgQurut.jpg";
+const img5 = "https://iili.io/BgDVXf4.jpg";
+const img6 = "https://iili.io/BgQMAfS.jpg";
+const img7 = "https://iili.io/BgQGW9s.jpg";
+const img8 = "https://iili.io/BgQG0PI.jpg";
+const img9 = "https://iili.io/BgQa7wB.jpg";
+const img10 = "https://iili.io/BgQlSTl.jpg";
+const img11 = "https://iili.io/BgQufTX.jpg";
+const img12 = "https://iili.io/BgDVMWG.jpg";
+const img13 = "https://iili.io/BgQABHB.jpg";
+const img14 = "https://iili.io/BgQc9DB.jpg";
+const img15 = "https://iili.io/BgDXK8B.jpg";
+const img16 = "https://iili.io/BgQaNnt.jpg";
 import { Flower2, Heart } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 import WeddingAlbum from "./WeddingAlbum";
@@ -21,9 +21,9 @@ import WeddingAlbum from "./WeddingAlbum";
 import { useLanguage } from "@/context/LanguageContext";
 
 const photos = [
-  img3,
   img1,
   img2,
+  img3,
   img4,
   img5,
   img6,
@@ -69,9 +69,7 @@ const GallerySection = () => {
             </div>
           </ScrollReveal>
 
-          <ScrollReveal direction="up" delay={0.2}>
-            <WeddingAlbum photos={photos} />
-          </ScrollReveal>
+          <WeddingAlbum photos={photos} />
         </div>
       </section>
     </>

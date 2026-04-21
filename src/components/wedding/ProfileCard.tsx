@@ -27,6 +27,7 @@ interface ProfileCardProps {
   scrollDirection: "left" | "right";
   imgPosition?: string;
   badgePosition?: "left" | "right";
+  imgScale?: string;
 }
 
 const ProfileCard = ({
@@ -51,6 +52,7 @@ const ProfileCard = ({
   scrollDirection,
   imgPosition = "object-center",
   badgePosition = "right",
+  imgScale = "scale-100",
 }: ProfileCardProps) => {
   return (
     <div className="flex flex-col items-center group">
@@ -61,7 +63,7 @@ const ProfileCard = ({
             <img
               src={image}
               alt={name}
-              className={`w-full h-full object-cover ${imgPosition} group-hover:scale-110 transition-transform duration-1000`}
+              className={`w-full h-full object-cover ${imgPosition} ${imgScale} group-hover:scale-[1.15] transition-transform duration-1000`}
             />
           </div>
           <div className={`absolute top-10 ${badgePosition === "right" ? "right-0 translate-x-4 -rotate-12" : "left-0 -translate-x-4 rotate-12"} z-20 bg-wedding-gold text-white px-4 py-2 rounded-full shadow-lg`}>
@@ -161,7 +163,7 @@ const ProfileCard = ({
 
           <a
             href={mapUrl}
-            target="_blank"
+            target={typeof window !== 'undefined' && /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) ? "_self" : "_blank"}
             rel="noopener noreferrer"
             className="mt-12 flex items-center justify-center gap-3 bg-wedding-gold/10 hover:bg-wedding-gold text-wedding-gold hover:text-white py-4 rounded-xl transition-all duration-500 text-xs md:text-sm uppercase tracking-[0.3em] font-bold"
           >

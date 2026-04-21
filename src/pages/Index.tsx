@@ -40,6 +40,9 @@ const Index = () => {
   const handleOpen = (name: string) => {
     setGuestName(name);
     setIsLocked(false);
+
+    // Phát tín hiệu để MusicPlayer bắt đầu chơi nhạc ngay trong event click này
+    window.dispatchEvent(new CustomEvent('playWeddingMusic'));
   };
 
   return (

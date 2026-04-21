@@ -10,19 +10,19 @@ interface ScrollRevealProps {
   rotate?: number;
 }
 
-const ScrollReveal = ({ 
-  children, 
-  className = "", 
-  delay = 0, 
+const ScrollReveal = ({
+  children,
+  className = "",
+  delay = 0,
   direction = "up",
   duration = 1.0,
   rotate = 0
 }: ScrollRevealProps) => {
   const variants = {
-    up: { y: 30, opacity: 0, rotate },
-    down: { y: -30, opacity: 0, rotate },
-    left: { x: 30, opacity: 0, rotate },
-    right: { x: -30, opacity: 0, rotate },
+    up: { y: 60, opacity: 0, rotate },
+    down: { y: -60, opacity: 0, rotate },
+    left: { x: 60, opacity: 0, rotate },
+    right: { x: -60, opacity: 0, rotate },
     none: { opacity: 0, rotate },
   };
 
