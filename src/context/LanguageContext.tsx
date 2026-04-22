@@ -84,7 +84,7 @@ const translations: Record<Language, Record<string, string>> = {
     "story.subtitle1": "Cảm ơn em đã đồng hành cùng anh trong suốt 6 năm. Và kết thúc năm thứ 7 với một cái kết viên mãn.",
     "story.subtitle": "(Our Love Story)",
     "story.event1.title": "Lần đầu gặp nhau",
-    "story.event1.text": "Mạnh dạn thấy em chơi ma xói cùng bạn bè. Tôi can đảm ra xem bắt đầu gửi kết bạn là nhắn ngõ lời trêu ghẹo nhưng không ai ngờ lại là định mệnh của nhau",
+    "story.event1.text": "Mạnh dạn thấy em chơi ma sói cùng bạn bè. Tôi can đảm ra xem bắt đầu gửi kết bạn là nhắn ngõ lời trêu ghẹo nhưng không ai ngờ lại là định mệnh của nhau",
     "story.event1.date": "10 / 2019",
     "story.event2.title": "Sinh nhật cùng nhau",
     "story.event2.text": "Em cùng tôi đón sinh nhật",
