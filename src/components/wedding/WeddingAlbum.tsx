@@ -94,7 +94,7 @@ const WeddingAlbum: React.FC<WeddingAlbumProps> = ({ photos }) => {
   const prev = () => bookRef.current?.pageFlip()?.flipPrev();
 
   return (
-    <div className="relative max-w-[1400px] mx-auto py-16 md:py-24 px-4 group">
+    <div className="relative max-w-[1400px] mx-auto py-16 md:py-24 px-4 pt-0 group">
       {/* Background decoration */}
       <div className="absolute top-0 left-0 w-full h-full opacity-[0.03] pointer-events-none overflow-hidden">
         <Flower2 className="absolute top-10 left-10 w-64 h-64 text-wedding-gold rotate-12" />
@@ -321,7 +321,7 @@ const WeddingAlbum: React.FC<WeddingAlbumProps> = ({ photos }) => {
                 Our Journey
               </h2>
               <div className="space-y-4">
-                <p className="wedding-body text-wedding-gold/90 tracking-[0.4em] uppercase text-sm font-bold border-y border-wedding-gold/20 py-2 px-4">
+                <p className="wedding-body text-wedding-gold/90 tracking-[0.4em] uppercase text-sm font-bold border-y border-wedding-gold/20 py-2">
                   {t("brand.groom")} & {t("brand.bride")}
                 </p>
                 <p className="wedding-display text-wedding-gold/40 text-[14px] tracking-[0.3em] font-medium mt-2">

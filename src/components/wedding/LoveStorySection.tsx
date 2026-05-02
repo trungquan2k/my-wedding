@@ -1,13 +1,11 @@
-import { motion } from "framer-motion";
 import { Heart } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 import mylove from "@/assets/mylove.jpg";
 import newLove from "@/assets/new.jpg";
 import firstDate from "@/assets/firstdate.jpg";
 import birthDay from "@/assets/my-second-birth.jpg";
-import img3 from "@/assets/KENN1039.jpg";
-import img4 from "@/assets/KENN0990.jpg";
 import { useLanguage } from "@/context/LanguageContext";
+import SectionTitle from "./SectionTitle";
 
 const LoveStorySection = () => {
   const { t } = useLanguage();
@@ -62,15 +60,7 @@ const LoveStorySection = () => {
     >
       <div className="max-w-6xl mx-auto px-4 mb-16">
         <ScrollReveal>
-          <p className="wedding-script text-3xl md:text-4xl wedding-gold-text text-center mb-2">
-            {t("story.title")}
-          </p>
-          <p className="text-center text-muted-foreground wedding-body text-lg">
-            {t("story.subtitle1")}
-          </p>
-          <p className="text-center text-muted-foreground wedding-body text-lg">
-            {t("story.subtitle")}
-          </p>
+          <SectionTitle title={t("story.title")} subtitle={t("story.subtitle1")} />
         </ScrollReveal>
       </div>
 
@@ -84,14 +74,14 @@ const LoveStorySection = () => {
               delay={i * 0.15}
               className={`${i % 2 !== 0 ? "md:mt-32" : ""}`}
             >
-              <div className="bg-white p-4 md:p-6 rounded-sm shadow-[0_15px_50px_rgba(0,0,0,0.06)] hover:shadow-[0_30px_80px_rgba(0,0,0,0.12)] transition-all duration-700 group/card border border-wedding-gold/5 flex flex-col h-full transform hover:scale-[1.02] relative">
+              <div className={`bg-white p-4 md:p-6 rounded-sm shadow-[0_15px_50px_rgba(0,0,0,0.06)] hover:shadow-[0_30px_80px_rgba(0,0,0,0.12)] transition-all duration-700 group/card border border-wedding-gold/5 flex flex-col h-full transform hover:scale-[1.02] relative ${i % 2 !== 0 ? "md:flex-col-reverse" : ""}`}>
                 {/* Visual Number Indicator */}
-                <div className="absolute -top-6 -left-4 md:-left-8 text-6xl md:text-8xl font-bold text-wedding-gold/5 wedding-display pointer-events-none select-none">
+                <div className={`absolute -top-6 text-6xl md:text-8xl font-bold text-wedding-gold/5 wedding-display pointer-events-none select-none ${i % 2 !== 0 ? "md:top-auto md:-bottom-6" : ""} ${i % 2 === 0 ? "-left-4 md:-left-8" : "-right-4 md:-right-8"}`}>
                   0{i + 1}
                 </div>
 
                 {/* Image Container */}
-                <div className="relative overflow-hidden aspect-[4/3] rounded-xs mb-8 shadow-sm">
+                <div className={`relative overflow-hidden aspect-[4/3] rounded-xs shadow-sm ${i % 2 !== 0 ? "md:mt-8 mb-0" : "mb-8 mt-0"}`}>
                   <img
                     src={s.image}
                     alt={s.title}
@@ -103,7 +93,7 @@ const LoveStorySection = () => {
                   <div className="absolute inset-0 bg-black/5 group-hover/card:bg-transparent transition-colors duration-700" />
 
                   {/* Elegant Date Tag */}
-                  <div className="absolute bottom-0 left-0 bg-wedding-gold/90 backdrop-blur-md px-5 py-2 text-[12px] tracking-[0.3em] text-white uppercase font-bold wedding-display">
+                  <div className={`absolute bottom-0 bg-wedding-gold/90 backdrop-blur-md px-5 py-2 text-[12px] tracking-[0.3em] text-white uppercase font-bold wedding-display ${i % 2 === 0 ? "left-0" : "right-0"}`}>
                     {s.date}
                   </div>
                 </div>

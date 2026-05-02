@@ -8,6 +8,7 @@ import WishesSection from "@/components/wedding/WishesSection";
 import FooterSection from "@/components/wedding/FooterSection";
 import CurtainIntro from "@/components/wedding/CurtainIntro";
 import ProfileSection from "@/components/wedding/ProfileSection";
+import InvitationSection from "@/components/wedding/InvitationSection";
 import bannerImg from "@/assets/KENN0975.jpg";
 import GiftSection from "@/components/wedding/GiftSection";
 import { useState, useEffect } from "react";
@@ -51,6 +52,7 @@ const Index = () => {
       <NavBar />
       <HeroSection />
       <ProfileSection guestName={guestName} />
+      <InvitationSection />
       <LoveStorySection />
       <GallerySection />
       <ParallaxBanner

@@ -139,10 +139,8 @@ const CurtainIntro = ({ onOpen }: CurtainIntroProps) => {
               </motion.div> */}
 
               <div className="relative group">
-                {/* Outer Glows */}
                 <div className="absolute -inset-24 bg-wedding-gold/20 blur-[80px] rounded-full animate-pulse" />
 
-                {/* Decorative Rings */}
                 <motion.div
                   animate={{ rotate: 360 }}
                   transition={{
@@ -162,12 +160,10 @@ const CurtainIntro = ({ onOpen }: CurtainIntroProps) => {
                   className="absolute -inset-16 border-[0.5px] border-wedding-gold/50 border-dashed rounded-full"
                 />
 
-                {/* Main Button (Seal) */}
                 <button
                   onClick={handleOpen}
                   className="relative flex flex-col items-center justify-center w-52 h-52 bg-wedding-gold rounded-full shadow-[0_0_50px_rgba(212,175,55,0.4)] hover:shadow-[0_0_80px_rgba(212,175,55,0.6)] transition-all duration-700 active:scale-95 group overflow-hidden border-4 border-white/20"
                 >
-                  {/* Texture on button */}
                   <div className="absolute inset-0 bg-radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.2)_0% bg-transparent_70%)" />
 
                   <span className="wedding-script text-white text-4xl mb-1 mt-2 tracking-wide drop-shadow-md">
@@ -178,7 +174,6 @@ const CurtainIntro = ({ onOpen }: CurtainIntroProps) => {
                     Wedding
                   </span>
 
-                  {/* Hover Shine Animation */}
                   <div className="absolute top-0 -left-[150%] w-[100%] h-full bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-[35deg] group-hover:left-[150%] transition-all duration-[1200ms] ease-in-out" />
                 </button>
               </div>

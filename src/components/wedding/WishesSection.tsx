@@ -27,7 +27,7 @@ const fetchWishes = async () => {
 };
 
 const BAD_WORDS = [
-  "đụ", "má", "vãi", "cứt", "loz", "lồn", "buồi", "cặc", "đéo", "chó", "khốn", 
+  "đụ", "má", "vãi", "cứt", "loz", "lồn", "buồi", "cặc", "đéo", "chó", "khốn",
   "mẹ kiếp", "đm", "vcl", "cl", "vl", "con mẹ", "thằng chó", "đồ khốn", "đĩ", "điếm"
 ];
 
@@ -101,11 +101,11 @@ const WishesSection = () => {
     }
 
     // 3. Bad words filter (Simple contains check)
-    const hasBadWords = BAD_WORDS.some(word => 
-      trimmedMessage.toLowerCase().includes(word.toLowerCase()) || 
+    const hasBadWords = BAD_WORDS.some(word =>
+      trimmedMessage.toLowerCase().includes(word.toLowerCase()) ||
       trimmedName.toLowerCase().includes(word.toLowerCase())
     );
-    
+
     if (hasBadWords) {
       toast({
         title: language === 'vi' ? "Lời chúc không hợp lệ" : "Invalid message",
@@ -207,9 +207,9 @@ const WishesSection = () => {
                       <span className="text-xs text-muted-foreground lowercase first-letter:uppercase">
                         {w.created_at
                           ? formatDistanceToNow(new Date(w.created_at), {
-                              addSuffix: true,
-                              locale: language === 'vi' ? vi : enUS,
-                            })
+                            addSuffix: true,
+                            locale: language === 'vi' ? vi : enUS,
+                          })
                           : language === 'vi' ? "Vừa xong" : "Just now"}
                       </span>
                     </div>

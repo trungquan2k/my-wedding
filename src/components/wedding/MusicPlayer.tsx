@@ -47,7 +47,8 @@ const MusicPlayer = ({ isLocked }: MusicPlayerProps) => {
           controls: 0,
           showinfo: 0,
           modestbranding: 1,
-          enablejsapi: 1
+          enablejsapi: 1,
+          origin: window.location.origin
         },
         events: {
           onReady: (event: any) => {
@@ -114,7 +115,7 @@ const MusicPlayer = ({ isLocked }: MusicPlayerProps) => {
               <Music className="w-5 h-5" />
             </motion.div>
           ) : (
-            <Music2 className="w-5 h-5" />
+            <Music2 className="w-5 h-5 text-primary" />
           )}
         </button>
       </div>

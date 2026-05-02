@@ -1,10 +1,9 @@
-import brideImg from "@/assets/KENN0470.jpg";
-import groomImg from "@/assets/KENN1083.jpg";
+
 import { useLanguage } from "@/context/LanguageContext";
-import { GUEST_LIST } from "@/data/guests";
 import { Heart } from "lucide-react";
 import ProfileCard from "./ProfileCard";
 import ScrollReveal from "./ScrollReveal";
+import SectionTitle from "./SectionTitle";
 
 interface ProfileSectionProps {
   guestName?: string | null;
@@ -13,41 +12,23 @@ interface ProfileSectionProps {
 const ProfileSection = ({ guestName }: ProfileSectionProps) => {
   const { t } = useLanguage();
   const isInvited = true
-
   return (
     <section
       id="details"
-      className="py-24 md:py-36 bg-wedding-warm/20 relative overflow-hidden"
+      className="py-24 md:py-36 pb-0 bg-wedding-warm/20 relative overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-4 relative z-10">
+      <div className="max-w-7xl mx-auto relative z-10">
         <ScrollReveal>
-          <div className="text-center mb-20 md:mb-28">
-            <span className="wedding-body text-wedding-gold tracking-[0.4em] text-sm md:text-base uppercase mb-4 block">
-              {t("profile.saveTheDate")}
-            </span>
-            <h2 className="wedding-script text-5xl md:text-7xl wedding-gold-text mb-6">
-              {isInvited
-                ? `${t("profile.welcome")} ${guestName}`
-                : t("profile.inviteTitle")}
-            </h2>
-            <div className="w-32 h-px bg-wedding-gold/40 mx-auto mb-8" />
-            <p className="wedding-body text-foreground text-lg md:text-3xl max-w-2xl mx-auto leading-relaxed italic opacity-80">
-              {isInvited
-                ? t("profile.inviteDescInvited").replace(
-                  "{name}",
-                  guestName || "",
-                )
-                : t("profile.inviteDescGeneral")}
-            </p>
-          </div>
+          <SectionTitle title={t("profile.saveTheDate")} />
         </ScrollReveal>
 
         {isInvited ? (
-          <div className="grid lg:grid-cols-2 gap-20 md:gap-32">
+          <div className="grid lg:grid-cols-2 gap-4 md:gap-4">
             <ProfileCard
               image={"https://iili.io/BrOpjxR.jpg"}
+              quote={t("profile.groomQuote")}
               sideLabel={t("profile.groomSide")}
-              name={t("profile.groomName")}
+              name={"Trung Quân"}
               title={t("profile.groomTitle")}
               relationship={t("profile.sonOf")}
               parents={{
@@ -56,25 +37,15 @@ const ProfileSection = ({ guestName }: ProfileSectionProps) => {
               }}
               address={t("profile.groomAddress")}
               addressDetail={t("profile.groomAddressDetail")}
-              ceremonyTitle={t("profile.weddingCeremony")}
-              ceremonyTypeLabel={t("profile.ceremonyAtHome")}
-              ceremonyTime={`07h00 - ${t("profile.tuesday")}`}
-              ceremonyDate="26 . 05 . 2026"
-              lunarDate={t("profile.lunarDateGroom")}
-              receptionTypeLabel={t("profile.receptionAtHome")}
-              receptionTime={`10h30 ${t("profile.morning")}`}
-              receptionAddress={t("profile.groomReceptionAddress")}
-              mapUrl="https://maps.app.goo.gl/rQW4JUwTbxWbMa7v9"
-              viewMapLabel={t("profile.viewMap")}
               scrollDirection="right"
               imgPosition="object-[center_10%]"
-              badgePosition="right"
             />
 
             <ProfileCard
-              image={"https://iili.io/Brj4rkF.jpg"}
+              image={"https://iili.io/BLF5rKb.jpg"}
+              quote={t("profile.brideQuote")}
               sideLabel={t("profile.brideSide")}
-              name={t("profile.brideName")}
+              name={t("profile.brideName.v2")}
               title={t("profile.brideTitle")}
               relationship={t("profile.daughterOf")}
               parents={{
@@ -83,20 +54,9 @@ const ProfileSection = ({ guestName }: ProfileSectionProps) => {
               }}
               address={t("profile.brideAddress")}
               addressDetail={t("profile.brideAddressDetail")}
-              ceremonyTitle={t("profile.vuQuyCeremony")}
-              ceremonyTypeLabel={t("profile.ceremonyAtHome")}
-              ceremonyTime={`08h00 - ${t("profile.sunday")}`}
-              ceremonyDate="24 . 05 . 2026"
-              lunarDate={t("profile.lunarDateBride")}
-              receptionTypeLabel={t("profile.receptionAtHome")}
-              receptionTime={`11h00 ${t("profile.morning")}`}
-              receptionAddress={t("profile.brideReceptionAddress")}
-              mapUrl="https://maps.app.goo.gl/546cZurhSAooApAT8"
-              viewMapLabel={t("profile.viewMap")}
               scrollDirection="left"
               imgPosition="object-[center_25%]"
               imgScale="scale-[1.5]"
-              badgePosition="left"
             />
           </div >
         ) : (

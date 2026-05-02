@@ -25,7 +25,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: -12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className="wedding-script text-2xl md:text-3xl text-white/90 mb-3 drop-shadow-lg"
+          className="wedding-script text-2xl md:text-3xl text-white/90 mb-3 drop-shadow-lg w-full flex justify-center"
         >
           {t("hero.gettingMarried")}
         </motion.p>
@@ -34,13 +34,13 @@ const HeroSection = () => {
           initial={{ opacity: 0, scale: 0.92 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="flex items-center gap-4 md:gap-6"
+          className="flex flex-nowrap items-center justify-center gap-x-3 md:gap-x-8 w-full"
         >
-          <h1 className="wedding-display text-4xl md:text-7xl font-semibold text-white drop-shadow-xl leading-[1.1]">
+          <h1 className="wedding-display text-3xl md:text-7xl font-semibold text-white drop-shadow-xl leading-[1.1] whitespace-nowrap">
             Trung Quân
           </h1>
-          <Heart className="w-6 h-6 md:w-8 md:h-8 text-wedding-gold fill-wedding-gold animate-float shrink-0" />
-          <h1 className="wedding-display text-4xl md:text-7xl font-semibold text-white drop-shadow-xl leading-[1.1]">
+          <Heart className="w-5 h-5 md:w-8 md:h-8 text-wedding-gold fill-wedding-gold animate-float shrink-0" />
+          <h1 className="wedding-display text-3xl md:text-7xl font-semibold text-white drop-shadow-xl leading-[1.1] whitespace-nowrap">
             Yến Nhi
           </h1>
         </motion.div>
@@ -49,7 +49,7 @@ const HeroSection = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 1.0 }}
-          className="wedding-display text-lg md:text-2xl text-white/80 mt-4 tracking-[0.2em] drop-shadow-md"
+          className="wedding-display text-lg md:text-2xl text-white/80 mt-4 tracking-[0.2em] drop-shadow-md w-full flex justify-center"
         >
           26 . 05 . 2026
         </motion.p>
@@ -58,7 +58,7 @@ const HeroSection = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 1.4 }}
-          className="mt-10"
+          className="mt-10 w-full flex justify-center"
         >
           <a
             href="#story"
