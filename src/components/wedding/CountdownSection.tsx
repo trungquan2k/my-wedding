@@ -1,10 +1,17 @@
 import { useEffect, useState } from "react";
 import ScrollReveal from "./ScrollReveal";
+import { useLanguage } from "@/context/LanguageContext";
 
-const WEDDING_DATE = new Date("2026-06-15T10:00:00+07:00");
+const WEDDING_DATE = new Date("2026-05-26T10:30:00+07:00");
 
 const CountdownSection = () => {
-  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const { t, language } = useLanguage();
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
 
   useEffect(() => {
     const calc = () => {
@@ -22,10 +29,10 @@ const CountdownSection = () => {
   }, []);
 
   const blocks = [
-    { value: timeLeft.days, label: "Ngày" },
-    { value: timeLeft.hours, label: "Giờ" },
-    { value: timeLeft.minutes, label: "Phút" },
-    { value: timeLeft.seconds, label: "Giây" },
+    { value: timeLeft.days, label: t("countdown.days") },
+    { value: timeLeft.hours, label: t("countdown.hours") },
+    { value: timeLeft.minutes, label: t("countdown.minutes") },
+    { value: timeLeft.seconds, label: t("countdown.seconds") },
   ];
 
   return (
@@ -36,7 +43,7 @@ const CountdownSection = () => {
             Save the Date
           </p>
           <p className="wedding-display text-xl md:text-2xl font-medium text-foreground tracking-wide mb-10">
-            15 tháng 06, 2026
+            {language === 'vi' ? '26 tháng 05, 2026' : 'May 26, 2026'}
           </p>
         </ScrollReveal>
 
@@ -44,7 +51,7 @@ const CountdownSection = () => {
           {blocks.map((b, i) => (
             <ScrollReveal key={b.label} delay={0.08 * i}>
               <div className="flex flex-col items-center">
-                <div className="w-18 h-18 md:w-24 md:h-24 flex items-center justify-center bg-wedding-warm border border-border rounded-sm shadow-md">
+                <div className="w-18 h-18 p-5 md:w-24 md:h-24 flex items-center justify-center bg-wedding-warm border border-border rounded-sm shadow-md">
                   <span className="wedding-display text-2xl md:text-4xl font-semibold wedding-burgundy-text tabular-nums">
                     {String(b.value).padStart(2, "0")}
                   </span>

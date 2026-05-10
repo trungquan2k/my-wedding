@@ -34,16 +34,18 @@
     --input: 38 30% 80%;
     --ring: 38 60% 52%;
 
-    --radius: 0.25rem;
+    --radius: 0.5rem;
 
     /* Wedding custom tokens */
     --wedding-gold: 38 60% 52%;
     --wedding-gold-light: 40 50% 75%;
+    --wedding-gold-dark: 38 70% 35%;
     --wedding-cream: 40 33% 96%;
     --wedding-burgundy: 350 45% 35%;
     --wedding-burgundy-light: 350 30% 55%;
     --wedding-brown: 20 20% 30%;
     --wedding-warm: 35 40% 92%;
+    --wedding-silk: 40 20% 98%;
 
     --font-display: 'Playfair Display', serif;
     --font-script: 'Great Vibes', cursive;
@@ -149,27 +151,183 @@
   animation: float 4s ease-in-out infinite;
 }
 
-@keyframes shimmer {
-  0% { background-position: -200% center; }
-  100% { background-position: 200% center; }
+@keyframes pulse-slow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 .shimmer-gold {
   background: linear-gradient(
     90deg,
-    hsl(var(--wedding-gold)),
+    hsl(var(--wedding-gold-dark)),
     hsl(var(--wedding-gold-light)),
     hsl(var(--wedding-gold)),
     hsl(var(--wedding-gold-light)),
-    hsl(var(--wedding-gold))
+    hsl(var(--wedding-gold-dark))
   );
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: shimmer 4s linear infinite;
+  animation: shimmer 5s ease-in-out infinite;
+}
+
+.gold-foil {
+  background: linear-gradient(
+    135deg,
+    #bf953f,
+    #fcf6ba 20%,
+    #b38728 40%,
+    #fbf5b7 60%,
+    #aa771c 80%,
+    #bf953f
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 1px 1px rgba(0,0,0,0.1);
+}
+
+.glass-card {
+  @apply bg-white/40 backdrop-blur-md border border-white/20 shadow-xl;
+}
+
+.silk-texture {
+  background-color: #fcfcfc;
+  background-image: 
+    radial-gradient(at 50% 0%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(255, 255, 255, 1) 0%, transparent 50%),
+    url("https://www.transparenttextures.com/patterns/silk.png");
+  background-attachment: fixed;
+}
+
+.premium-shadow {
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06),
+    0 10px 15px -3px rgba(38, 60, 52, 0.1),
+    0 20px 25px -5px rgba(38, 60, 52, 0.05);
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Flipbook Styles */
+.wedding-album-book {
+  box-shadow: 0 0 40px rgba(0,0,0,0.3);
+  margin: 0 auto;
+}
+
+.perspective-1000 {
+  perspective: 2000px;
+}
+
+.paper-texture {
+  background-color: #fdfcf8;
+  background-image: url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+}
+
+.leather-cover {
+  background-color: #2D1412; /* Deep Espresso */
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.03) 0%, transparent 100%),
+    url("https://www.transparenttextures.com/patterns/leather.png");
+  box-shadow: 
+    inset 0 0 100px rgba(0,0,0,0.5),
+    0 10px 30px rgba(0,0,0,0.3);
+  position: relative;
+  border-radius: 4px 12px 12px 4px;
+}
+
+.leather-cover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, 
+    rgba(255,255,255,0.05) 0%, 
+    transparent 5%, 
+    transparent 95%, 
+    rgba(0,0,0,0.2) 100%
+  );
+  pointer-events: none;
+  z-index: 5;
+}
+
+.leather-cover::after {
+  content: '';
+  position: absolute;
+  inset: 20px;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  box-shadow: inset 0 0 10px rgba(212, 175, 55, 0.1);
+  pointer-events: none;
+  z-index: 5;
+}
+
+.gold-shine {
+  background: linear-gradient(
+    135deg,
+    transparent 0%,
+    rgba(255,255,255,0.2) 50%,
+    transparent 100%
+  );
+  background-size: 200% 200%;
+  animation: shine 6s linear infinite;
+}
+
+@keyframes shine {
+  0% { background-position: -200% -200%; }
+  100% { background-position: 200% 200%; }
+}
+
+.paper-texture {
+  background-color: #fdfcf8;
+  background-image: 
+    linear-gradient(90deg, rgba(0,0,0,0.02) 0%, transparent 5%, transparent 95%, rgba(0,0,0,0.02) 100%),
+    url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+}
+
+.stf__parent {
+  background-color: transparent !important;
+}
+
+.stf__wrapper {
+  background-color: transparent !important;
+}
+
+.page-edge {
+  position: absolute;
+  right: 1px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(90deg, rgba(0,0,0,0.05), transparent);
+}
+
+/* Responsive adjustment for flipbook */
+@media (max-width: 768px) {
+  .wedding-album-book {
+    max-width: 95vw;
+  }
+}
+
+.album-shadow {
+  box-shadow: 
+    0 1px 1px rgba(0,0,0,0.1), 
+    0 2px 2px rgba(0,0,0,0.1), 
+    0 4px 4px rgba(0,0,0,0.1), 
+    0 8px 8px rgba(0,0,0,0.1), 
+    0 16px 16px rgba(0,0,0,0.1);
 }

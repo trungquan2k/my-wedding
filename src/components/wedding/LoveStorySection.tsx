@@ -1,73 +1,123 @@
+import { Heart } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
-import coupleImg1 from "@/assets/wedding-couple-3.jpg";
-import coupleImg2 from "@/assets/wedding-couple-2.jpg";
+import mylove from "@/assets/mylove.jpg";
+import newLove from "@/assets/new.jpg";
+import firstDate from "@/assets/firstdate.jpg";
+import birthDay from "@/assets/my-second-birth.jpg";
+import { useLanguage } from "@/context/LanguageContext";
+import SectionTitle from "./SectionTitle";
 
-const stories = [
-  {
-    image: coupleImg1,
-    title: "Lần đầu gặp gỡ",
-    date: "Tháng 3, 2022",
-    text: "Một buổi chiều tình cờ, hai tâm hồn đồng điệu đã tìm thấy nhau giữa dòng đời bận rộn. Từ ánh mắt đầu tiên, chúng mình biết đây là khởi đầu của một câu chuyện đẹp.",
-    reversed: false,
-  },
-  {
-    image: coupleImg2,
-    title: "Lời cầu hôn",
-    date: "Tháng 12, 2025",
-    text: "Dưới bầu trời đầy sao, anh đã quỳ gối và nói những lời chân thành nhất. Và em đã gật đầu, mở ra chương mới tuyệt vời nhất của cuộc đời hai đứa.",
-    reversed: true,
-  },
-];
+const LoveStorySection = () => {
+  const { t } = useLanguage();
 
-const LoveStorySection = () => (
-  <section id="story" className="py-20 md:py-32 bg-background">
-    <div className="max-w-5xl mx-auto px-4">
-      <ScrollReveal>
-        <p className="wedding-script text-3xl md:text-4xl wedding-gold-text text-center mb-2">
-          Chuyện tình yêu
-        </p>
-        <p className="text-center text-muted-foreground wedding-body text-lg mb-16">
-          Our Love Story
-        </p>
-      </ScrollReveal>
+  const stories = [
+    {
+      image: firstDate,
+      title: t("story.event1.title"),
+      date: t("story.event1.date"),
+      text: t("story.event1.text"),
+    },
+    {
+      image: birthDay,
+      title: t("story.event2.title"),
+      date: t("story.event2.date"),
+      text: t("story.event2.text"),
+    },
+    {
+      image: newLove,
+      title: t("story.event3.title"),
+      date: t("story.event3.date"),
+      text: t("story.event3.text"),
+    },
+    {
+      image: mylove,
+      title: t("story.event4.title"),
+      date: t("story.event4.date"),
+      text: t("story.event4.text"),
+    },
+    {
+      image: "https://iili.io/BgQMlbj.jpg",
+      title: t("story.event5.title"),
+      date: t("story.event5.date"),
+      text: t("story.event5.text"),
+    },
+    {
+      image: "https://iili.io/BgQG0PI.jpg",
+      title: t("story.event6.title"),
+      date: t("story.event6.date"),
+      text: t("story.event6.text"),
+    },
+  ];
 
-      <div className="space-y-20 md:space-y-28">
-        {stories.map((s, i) => (
-          <ScrollReveal key={i} delay={0.1}>
-            <div
-              className={`flex flex-col ${
-                s.reversed ? "md:flex-row-reverse" : "md:flex-row"
-              } gap-8 md:gap-12 items-center`}
+  // Double the stories for seamless looping
+  // Use the original stories array for the grid layout
+  const displayStories = stories;
+
+  return (
+    <section
+      id="story"
+      className="py-20 md:py-32 bg-background overflow-hidden"
+    >
+      <div className="max-w-6xl mx-auto px-4 mb-16">
+        <ScrollReveal>
+          <SectionTitle title={t("story.title")} subtitle={t("story.subtitle1")} />
+        </ScrollReveal>
+      </div>
+
+      {/* Premium Staggered Grid Gallery */}
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-x-20 md:gap-y-32">
+          {displayStories.map((s, i) => (
+            <ScrollReveal
+              key={i}
+              direction="up"
+              delay={i * 0.15}
+              className={`${i % 2 !== 0 ? "md:mt-32" : ""}`}
             >
-              {/* Photo */}
-              <div className="w-full md:w-1/2">
-                <div className="relative overflow-hidden rounded-sm shadow-xl group">
+              <div className={`bg-white p-4 md:p-6 rounded-sm shadow-[0_15px_50px_rgba(0,0,0,0.06)] hover:shadow-[0_30px_80px_rgba(0,0,0,0.12)] transition-all duration-700 group/card border border-wedding-gold/5 flex flex-col h-full transform hover:scale-[1.02] relative ${i % 2 !== 0 ? "md:flex-col-reverse" : ""}`}>
+                {/* Visual Number Indicator */}
+                <div className={`absolute -top-6 text-6xl md:text-8xl font-bold text-wedding-gold/5 wedding-display pointer-events-none select-none ${i % 2 !== 0 ? "md:top-auto md:-bottom-6" : ""} ${i % 2 === 0 ? "-left-4 md:-left-8" : "-right-4 md:-right-8"}`}>
+                  0{i + 1}
+                </div>
+
+                {/* Image Container */}
+                <div className={`relative overflow-hidden aspect-[4/3] rounded-xs shadow-sm ${i % 2 !== 0 ? "md:mt-8 mb-0" : "mb-8 mt-0"}`}>
                   <img
                     src={s.image}
                     alt={s.title}
-                    className="w-full aspect-[4/5] object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                    className={`w-full h-full object-cover ${i >= displayStories.length - 2
+                      ? "object-top"
+                      : "object-center"
+                      } transition-all duration-1000 scale-[1.05] group-hover/card:scale-110`}
                   />
+                  <div className="absolute inset-0 bg-black/5 group-hover/card:bg-transparent transition-colors duration-700" />
+
+                  {/* Elegant Date Tag */}
+                  <div className={`absolute bottom-0 bg-wedding-gold/90 backdrop-blur-md px-5 py-2 text-[12px] tracking-[0.3em] text-white uppercase font-bold wedding-display ${i % 2 === 0 ? "left-0" : "right-0"}`}>
+                    {s.date}
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="flex-1 flex flex-col items-center text-center px-4">
+                  <h3 className="wedding-display text-2xl md:text-3xl font-bold wedding-burgundy-text mb-4 tracking-tight">
+                    {s.title}
+                  </h3>
+                  <div className="w-12 h-px bg-wedding-gold/30 mb-5" />
+                  <p className="wedding-body text-foreground/70 leading-relaxed text-sm md:text-base italic mb-6">
+                    "{s.text}"
+                  </p>
+                  <div className="w-10 h-10 opacity-10 mt-auto">
+                    <Heart className="w-full h-full text-wedding-gold fill-wedding-gold" />
+                  </div>
                 </div>
               </div>
-
-              {/* Text */}
-              <div className="w-full md:w-1/2 text-center md:text-left">
-                <span className="text-sm tracking-widest uppercase text-muted-foreground wedding-body">
-                  {s.date}
-                </span>
-                <h3 className="wedding-display text-2xl md:text-3xl font-semibold wedding-burgundy-text mt-2 mb-4">
-                  {s.title}
-                </h3>
-                <p className="wedding-body text-lg text-foreground leading-relaxed">
-                  {s.text}
-                </p>
-              </div>
-            </div>
-          </ScrollReveal>
-        ))}
+            </ScrollReveal>
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default LoveStorySection;

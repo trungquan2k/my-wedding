@@ -1,16 +1,20 @@
 import { motion } from "framer-motion";
 import { Heart, ChevronDown } from "lucide-react";
-import heroImg from "@/assets/wedding-hero.jpg";
+import { useLanguage } from "@/context/LanguageContext";
 
 const HeroSection = () => {
+  const { t } = useLanguage();
   return (
     <section className="relative h-screen w-full overflow-hidden">
       {/* Full-bleed background photo */}
       <div className="absolute inset-0">
-        <img
-          src={heroImg}
-          alt="Ảnh cưới"
-          className="w-full h-full object-cover"
+        <motion.img
+          initial={{ scale: 1.1 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 3, ease: "easeOut" }}
+          src="https://iili.io/BgQYWQ9.jpg"
+          alt={t("hero.gettingMarried")}
+          className="w-full h-full object-cover object-[center_25%]"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-black/60" />
       </div>
@@ -21,23 +25,23 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: -12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className="wedding-script text-2xl md:text-3xl text-white/90 mb-3 drop-shadow-lg"
+          className="wedding-script text-2xl md:text-3xl text-white/90 mb-3 drop-shadow-lg w-full flex justify-center"
         >
-          We're Getting Married
+          {t("hero.gettingMarried")}
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0, scale: 0.92 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="flex items-center gap-4 md:gap-6"
+          className="flex flex-nowrap items-center justify-center gap-x-3 md:gap-x-8 w-full"
         >
-          <h1 className="wedding-display text-4xl md:text-7xl font-semibold text-white drop-shadow-xl leading-[1.1]">
-            Văn A
+          <h1 className="wedding-display text-3xl md:text-7xl font-semibold text-white drop-shadow-xl leading-[1.1] whitespace-nowrap">
+            Trung Quân
           </h1>
-          <Heart className="w-6 h-6 md:w-8 md:h-8 text-wedding-gold fill-wedding-gold animate-float shrink-0" />
-          <h1 className="wedding-display text-4xl md:text-7xl font-semibold text-white drop-shadow-xl leading-[1.1]">
-            Thị B
+          <Heart className="w-5 h-5 md:w-8 md:h-8 text-wedding-gold fill-wedding-gold animate-float shrink-0" />
+          <h1 className="wedding-display text-3xl md:text-7xl font-semibold text-white drop-shadow-xl leading-[1.1] whitespace-nowrap">
+            Yến Nhi
           </h1>
         </motion.div>
 
@@ -45,22 +49,24 @@ const HeroSection = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 1.0 }}
-          className="wedding-display text-lg md:text-2xl text-white/80 mt-4 tracking-[0.2em] drop-shadow-md"
+          className="wedding-display text-lg md:text-2xl text-white/80 mt-4 tracking-[0.2em] drop-shadow-md w-full flex justify-center"
         >
-          15 . 06 . 2026
+          26 . 05 . 2026
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 1.4 }}
-          className="mt-10"
+          className="mt-10 w-full flex justify-center"
         >
           <a
             href="#story"
             className="flex flex-col items-center text-white/70 hover:text-white transition-colors"
           >
-            <span className="text-sm wedding-body tracking-widest uppercase mb-2">Khám phá</span>
+            <span className="text-sm wedding-body tracking-widest uppercase mb-2">
+              {t("hero.explore")}
+            </span>
             <ChevronDown className="w-5 h-5 animate-bounce" />
           </a>
         </motion.div>
@@ -68,5 +74,6 @@ const HeroSection = () => {
     </section>
   );
 };
+
 
 export default HeroSection;

@@ -1,105 +1,64 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { X, ChevronLeft, ChevronRight } from "lucide-react";
+const img1 = "https://iili.io/BgQYWQ9.jpg";
+const img2 = "https://iili.io/BgQaNnt.jpg";
+const img3 = "https://iili.io/BgDM799.jpg";
+const img4 = "https://iili.io/BgQurut.jpg";
+const img5 = "https://iili.io/BgDVXf4.jpg";
+const img6 = "https://iili.io/BgQMAfS.jpg";
+const img7 = "https://iili.io/BgQGW9s.jpg";
+const img8 = "https://iili.io/BgQG0PI.jpg";
+const img9 = "https://iili.io/BgQa7wB.jpg";
+const img10 = "https://iili.io/BgQlSTl.jpg";
+const img11 = "https://iili.io/BgQufTX.jpg";
+const img12 = "https://iili.io/BgDVMWG.jpg";
+const img13 = "https://iili.io/BgQABHB.jpg";
+const img14 = "https://iili.io/BgQc9DB.jpg";
+const img15 = "https://iili.io/BgDXK8B.jpg";
+const img16 = "https://iili.io/BgQaNnt.jpg";
 import ScrollReveal from "./ScrollReveal";
-import img1 from "@/assets/wedding-couple-1.jpg";
-import img2 from "@/assets/wedding-couple-2.jpg";
-import img3 from "@/assets/wedding-couple-3.jpg";
-import img4 from "@/assets/wedding-couple-4.jpg";
-import img5 from "@/assets/wedding-couple-5.jpg";
-import img6 from "@/assets/wedding-couple-6.jpg";
+import WeddingAlbum from "./WeddingAlbum";
 
-const photos = [img1, img2, img3, img4, img5, img6];
+import { useLanguage } from "@/context/LanguageContext";
+import SectionTitle from "./SectionTitle";
+
+const photos = [
+  img1,
+  img2,
+  img3,
+  img4,
+  img5,
+  img6,
+  img7,
+  img8,
+  img9,
+  img10,
+  img11,
+  img12,
+  img13,
+  img14,
+  img15,
+  img16,
+];
 
 const GallerySection = () => {
-  const [lightbox, setLightbox] = useState<number | null>(null);
-
-  const go = (dir: number) => {
-    if (lightbox === null) return;
-    setLightbox((lightbox + dir + photos.length) % photos.length);
-  };
+  const { t } = useLanguage();
 
   return (
     <>
-      <section id="gallery" className="py-20 md:py-32 bg-wedding-warm">
-        <div className="max-w-6xl mx-auto px-4">
+      <section
+        id="gallery"
+        className="md:py-10 silk-texture relative overflow-hidden"
+      >
+        <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-background to-transparent pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-background to-transparent pointer-events-none" />
+
+        <div className="max-w-[1600px] mx-auto px-4 relative z-10">
           <ScrollReveal>
-            <p className="wedding-script text-3xl md:text-4xl wedding-gold-text text-center mb-2">
-              Album ảnh cưới
-            </p>
-            <p className="text-center text-muted-foreground wedding-body text-lg mb-14">
-              Our Moments
-            </p>
+            <SectionTitle title={t("gallery.title")} subtitle={t("gallery.subtitle")} />
           </ScrollReveal>
 
-          {/* Masonry-ish grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
-            {photos.map((src, i) => (
-              <ScrollReveal key={i} delay={0.06 * i}>
-                <button
-                  onClick={() => setLightbox(i)}
-                  className="block w-full overflow-hidden rounded-sm shadow-lg group focus:outline-none focus-visible:ring-2 focus-visible:ring-ring active:scale-[0.97] transition-transform"
-                >
-                  <img
-                    src={src}
-                    alt={`Ảnh cưới ${i + 1}`}
-                    className={`w-full object-cover transition-transform duration-700 group-hover:scale-[1.04] ${
-                      i % 3 === 0 ? "aspect-[3/4]" : i % 3 === 1 ? "aspect-square" : "aspect-[4/3]"
-                    }`}
-                  />
-                </button>
-              </ScrollReveal>
-            ))}
-          </div>
+          <WeddingAlbum photos={photos} />
         </div>
       </section>
-
-      {/* Lightbox */}
-      <AnimatePresence>
-        {lightbox !== null && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
-            onClick={() => setLightbox(null)}
-          >
-            <button
-              onClick={(e) => { e.stopPropagation(); setLightbox(null); }}
-              className="absolute top-4 right-4 text-white/70 hover:text-white z-10 active:scale-95 transition"
-            >
-              <X className="w-7 h-7" />
-            </button>
-
-            <button
-              onClick={(e) => { e.stopPropagation(); go(-1); }}
-              className="absolute left-3 md:left-6 text-white/60 hover:text-white z-10 active:scale-95 transition"
-            >
-              <ChevronLeft className="w-8 h-8" />
-            </button>
-
-            <button
-              onClick={(e) => { e.stopPropagation(); go(1); }}
-              className="absolute right-3 md:right-6 text-white/60 hover:text-white z-10 active:scale-95 transition"
-            >
-              <ChevronRight className="w-8 h-8" />
-            </button>
-
-            <motion.img
-              key={lightbox}
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.3 }}
-              src={photos[lightbox]}
-              alt=""
-              className="max-h-[85vh] max-w-[90vw] object-contain rounded-sm shadow-2xl"
-              onClick={(e) => e.stopPropagation()}
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
     </>
   );
 };
