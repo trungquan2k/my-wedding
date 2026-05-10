@@ -13,6 +13,7 @@ const NavBar = () => {
     { label: t("nav.details"), href: "#details" },
     { label: t("nav.story"), href: "#story" },
     { label: t("nav.gallery"), href: "#gallery" },
+    { label: t("nav.registration"), href: "#registration" },
     // { label: t("nav.gift"), href: "#gift" },
     { label: t("nav.wishes"), href: "#wishes" },
   ];

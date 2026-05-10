@@ -11,6 +11,7 @@ import ProfileSection from "@/components/wedding/ProfileSection";
 import InvitationSection from "@/components/wedding/InvitationSection";
 import bannerImg from "@/assets/KENN0975.jpg";
 import GiftSection from "@/components/wedding/GiftSection";
+import RegistrationSection from "@/components/wedding/RegistrationSection";
 import { useState, useEffect } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import MusicPlayer from "@/components/wedding/MusicPlayer";
@@ -62,6 +63,7 @@ const Index = () => {
       />
       <CountdownSection />
       {/* <GiftSection /> */}
+      <RegistrationSection />
       <WishesSection />
       <FooterSection />
 

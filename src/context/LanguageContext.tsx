@@ -26,6 +26,7 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.details": "Lễ cưới",
     "nav.gift": "Mừng cưới",
     "nav.wishes": "Lời chúc",
+    "nav.registration": "Xác nhận",
     "nav.menu": "Mục lục",
 
     // HeroSection
@@ -181,6 +182,29 @@ const translations: Record<Language, Record<string, string>> = {
     "modal.ceremony": "Hôn lễ (Ceremony)",
     "modal.lunar": "Âm lịch",
     "modal.close": "Đóng",
+
+    // Registration
+    "registration.intro": "Để buổi tiệc được chuẩn bị chu đáo và trọn vẹn nhất, chúng mình rất mong nhận được sự xác nhận tham dự từ bạn. Sự hiện diện của bạn chính là món quà ý nghĩa nhất dành cho chúng mình!",
+    "registration.form.name": "Tên của Quý khách*",
+    "registration.form.attendance": "Quý khách sẽ tham dự chứ?",
+    "registration.form.side": "Quý khách sẽ tham gia với nhà:",
+    "registration.form.phone": "Số điện thoại",
+    "registration.form.arrival": "Quý khách sẽ đến Quảng Trị vào:",
+    "registration.form.groupSize": "Nhà mình đi mấy người để tụi em/ tụi mình chuẩn bị đón tiếp cho chu đáo ạ?",
+    "registration.form.placeholder.name": "Nhập tên của bạn",
+    "registration.form.placeholder.phone": "Nhập số điện thoại",
+    "registration.form.submit": "Gửi thông tin",
+    "registration.form.success": "Cảm ơn bạn đã xác nhận tham dự!",
+    "registration.form.error.name": "Vui lòng nhập tên của bạn",
+    "registration.form.error.phone": "Vui lòng nhập số điện thoại",
+    "registration.option.yes": "Chắc chắn rồi",
+    "registration.option.no": "Rất tiếc, mình không thể tham dự",
+    "registration.option.groomSide": "Nhà Nam",
+    "registration.option.brideSide": "Nhà Nữ",
+    "registration.option.arrival1.groom": "Sáng ngày 26/05/2026",
+    "registration.option.arrival2.groom": "Chiều tối ngày 25/05/2026",
+    "registration.option.arrival1.bride": "Sáng ngày 24/05/2026",
+    "registration.option.arrival2.bride": "Chiều tối ngày 23/05/2026",
   },
   en: {
     // Brand
@@ -193,6 +217,7 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.details": "Ceremony",
     "nav.gift": "Wedding Gift",
     "nav.wishes": "Wishes",
+    "nav.registration": "RSVP",
     "nav.menu": "Menu",
 
     // HeroSection
@@ -348,6 +373,29 @@ const translations: Record<Language, Record<string, string>> = {
     "modal.ceremony": "Wedding Ceremony",
     "modal.lunar": "Lunar Calendar",
     "modal.close": "Close",
+
+    // Registration
+    "registration.intro": "To help us prepare everything perfectly, we would love to have your attendance confirmation. Your presence is the most meaningful gift for us!",
+    "registration.form.name": "Your Name*",
+    "registration.form.attendance": "Will you attend?",
+    "registration.form.side": "Whose guest are you?",
+    "registration.form.phone": "Phone Number",
+    "registration.form.arrival": "You will arrive on:",
+    "registration.form.groupSize": "How many people in your group so we can prepare better?",
+    "registration.form.placeholder.name": "Your name",
+    "registration.form.placeholder.phone": "Phone number",
+    "registration.form.submit": "Submit",
+    "registration.form.success": "Thank you for confirming!",
+    "registration.form.error.name": "Please enter your name",
+    "registration.form.error.phone": "Please enter your phone number",
+    "registration.option.yes": "Yes, I will attend",
+    "registration.option.no": "Sorry, I can't attend",
+    "registration.option.groomSide": "Groom's Side",
+    "registration.option.brideSide": "Bride's Side",
+    "registration.option.arrival1.groom": "Morning of May 26, 2026",
+    "registration.option.arrival2.groom": "Evening of May 25, 2026",
+    "registration.option.arrival1.bride": "Morning of May 24, 2026",
+    "registration.option.arrival2.bride": "Evening of May 23, 2026",
   },
 };
 
